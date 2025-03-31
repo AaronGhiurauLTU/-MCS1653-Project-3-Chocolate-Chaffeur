@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bodvyrp7en4t8"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
+[ext_resource type="Texture2D" uid="uid://b5gl1o5hkfdtw" path="res://Sprites/CC-TileMap.png" id="1_jj5jt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dswmn"]
+atlas = ExtResource("1_jj5jt")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy382"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dswmn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfjxs"]
+size = Vector2(160, 160)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "moveCooldown")]
+script = ExtResource("1_7vq0b")
+Speed = 900.0
+animatedSprite = NodePath("AnimatedSprite2D")
+moveCooldown = NodePath("MoveCooldown")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sy382")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_vfjxs")
+
+[node name="MoveCooldown" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="MoveCooldown" to="." method="OnMoveCooldownTimeout"]
