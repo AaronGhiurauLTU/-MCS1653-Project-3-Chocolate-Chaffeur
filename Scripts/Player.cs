@@ -8,43 +8,43 @@ public partial class Player : CharacterBody2D
 	[Export] private AnimatedSprite2D animatedSprite;
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
-	[Export] private Chocolate chocolate;
+
 	private bool isMoving = false,
 		pushingChocolate = false,
 		canMove = true;
+	private MoveableObject movingObject;
 	private Vector2 originalPosition, targetPosition, previousRawDirection, previousDirection;
 	public override void _Ready()
 	{
-		chocolate.ChocolatePushed += ChocolatePushed;
-		chocolate.ChocolateHitObstacle += ChocolateHitObstacle;
+
 	}
 	private void OnMoveCooldownTimeout()
 	{
 		canMove = true;
 		moveCooldown.Stop();
 	}
-	private void ChocolatePushed()
+	public void ChocolatePushed(MoveableObject obj)
 	{
 		if (!isMoving)
 			return;
-		GD.Print("pushed");
-		CallDeferred("ConnectChocolate");
 
+		CallDeferred("ConnectChocolate", obj);
 	}
 
-	private void ConnectChocolate()
+	private void ConnectChocolate(MoveableObject chocolate)
 	{
 		chocolate.GetParent().RemoveChild(chocolate);
 		AddChild(chocolate);
 		chocolate.Position = Velocity.Normalized() * tileSize;
 		pushingChocolate = true;
+		movingObject = chocolate;
 	}
 
-	private void ChocolateHitObstacle()
+	public void ChocolateHitObstacle(MoveableObject obj, Node2D body)
 	{
 		if (!isMoving || !pushingChocolate)
 			return;
-		GD.Print("hit");
+
 		Position = originalPosition;
 		StopMoving();
 	}
@@ -54,17 +54,19 @@ public partial class Player : CharacterBody2D
 		Velocity = Vector2.Zero;
 		isMoving = false;
 
-		CallDeferred("DisconnectChocolate");
+		CallDeferred("DisconnectChocolate", movingObject);
 		moveCooldown.Start();
 	}
-	private void DisconnectChocolate()
+	private void DisconnectChocolate(MoveableObject chocolate)
 	{
 		if (pushingChocolate)
 		{
 			RemoveChild(chocolate);
 			GetParent().AddChild(chocolate);
+			chocolate.ShiftPosition((Vector2I)chocolate.Position.Normalized());
 			chocolate.Position = Position + chocolate.Position;
 			pushingChocolate = false;
+
 		}
 	}
 
@@ -108,7 +110,16 @@ public partial class Player : CharacterBody2D
 
 			string tileName = (string)tileData?.GetCustomData("Name");
 
-			if (tileName != null && tileName != "floor")
+			Vector2I nextPos = tilePos + (Vector2I)direction;
+			TileData nextData = tileMap.GetCellTileData(nextPos);
+
+			string nextTileName = (string)nextData?.GetCustomData("Name");
+
+			Node2D currentObject = GameManager.GetObject(tilePos);
+			Node2D nextObject = GameManager.GetObject(nextPos);
+
+
+			if ((tileName != null && tileName != "floor") || (currentObject != null && ((nextTileName != null && nextTileName != "floor") || nextObject != null)))
 			{
 				return;
 			}
