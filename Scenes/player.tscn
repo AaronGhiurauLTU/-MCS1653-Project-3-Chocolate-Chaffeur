@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bodvyrp7en4t8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
-[ext_resource type="Texture2D" uid="uid://b5gl1o5hkfdtw" path="res://Sprites/CC-TileMap.png" id="1_jj5jt"]
+[ext_resource type="Texture2D" uid="uid://86qdl04rb0fy" path="res://Sprites/CC-TileMap.png" id="1_jj5jt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dswmn"]
 atlas = ExtResource("1_jj5jt")
@@ -22,6 +22,8 @@ animations = [{
 size = Vector2(159, 159)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "moveCooldown")]
+collision_layer = 3
+collision_mask = 7
 script = ExtResource("1_7vq0b")
 Speed = 900.0
 animatedSprite = NodePath("AnimatedSprite2D")

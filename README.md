@@ -10,91 +10,53 @@
 ---
 
 # Required ReadMe Info for ALL MCS1653 Projects
-* **Project**   - Project 2 Tower Defense: Rodent Rampage
+* **Project**   - Project 3 Puzzle Game: Chocolate Chaffeur
 * **Your Name** - Aaron Ghiurau
-* **Date**      - 03/23/2025
+* **Date**      -
 
 <br>
 
 1. **What are the controls to your game? How do we play?**
 
-Mouse for menu navigation and placing towers. 
 
-Escape to pause and unpause.
 
 <br>
 
 2. **What creative additions did you make? How can we find them?**
 
-All art was drawn by me. The owl does high damage but has a low area of attack making it effective for rats but not mice. Cats have a larger area attack making it more effective against mice to encourage using both types of towers.
 
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
 
-Background music:
-
-    Scheming Weasel (faster version) Kevin MacLeod (incompetech.com)
-    Licensed under Creative Commons: By Attribution 3.0 License
-    http://creativecommons.org/licenses/by/3.0/
-
-Boss music:
-
-    Volatile Reaction Kevin MacLeod (incompetech.com)
-    Licensed under Creative Commons: By Attribution 3.0 License
-    http://creativecommons.org/licenses/by/3.0/
-
-Victory music:
-
-    Take a Chance Kevin MacLeod (incompetech.com)
-    Licensed under Creative Commons: By Attribution 3.0 License
-    http://creativecommons.org/licenses/by/3.0/
-
-Defeat music:
-
-	lose life falling 
-	https://mixkit.co/free-sound-effects/lose/
-	Mixkit Sound Effects Free License
-
-mouse squek.mp3 by FairCashew -- https://freesound.org/s/684866/ -- License: Creative Commons 0
-
-rat-squeak.wav by toefur -- https://freesound.org/s/288941/ -- License: Creative Commons 0
-
-Biting Apple #2 by AUDACITIER -- https://freesound.org/s/632231/ -- License: Attribution 4.0
-
-1_Knife_Slash_A.wav by lmbubec -- https://freesound.org/s/118792/ -- License: Creative Commons 0
-
-Simple Slash Attack Sound by BeezleFM -- https://freesound.org/s/518883/ -- License: Attribution 4.0
 
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
 
-No
+
 
 <br>
 
 5. **Did you get help from any AI Code Assistants?** <br> (Tell us which .cs file to look in for the citation and describe what you learned)
 
-No
+
 
 <br>
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 
-Detecting where the mouse is relative to tilemap: https://www.reddit.com/r/godot/comments/13vyt1q/detecting_mouse_hover_on_tilemaps/
 
 <br>
 
 7. **What trouble did you have with this project?**
 
-The most difficult feature to implement was the tile management. There were many issues related to mouse position and scaling of nodes causing undesired behavior.
 
 <br>
 
 8. **Is there anything else we should know?**
 
-No
+
 
 <br><br><br><br><br>
 
