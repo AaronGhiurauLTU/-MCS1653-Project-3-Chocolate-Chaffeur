@@ -6,7 +6,8 @@ public partial class Player : CharacterBody2D
 	[Export] private int tileSize = 160;
 	[Export] private float Speed = 300.0f;
 	[Export] private AnimatedSprite2D animatedSprite;
-	[Export] Timer moveCooldown;
+	[Export] private Timer moveCooldown;
+	[Export] private TileMapLayer tileMap;
 	private bool isMoving = false;
 	private bool canMove = true;
 	private Vector2 targetPosition, previousRawDirection, previousDirection;
@@ -28,9 +29,7 @@ public partial class Player : CharacterBody2D
 
 		Vector2 rawDirection = new (horizontal, vertical);
 		Vector2 directionDifference = rawDirection - previousRawDirection;
-		if (directionDifference.Length() > 0)
-			GD.Print(horizontal +  " " + directionDifference + " " + (horizontal != 0 && ((directionDifference.X == 0 && vertical == 0) || directionDifference.X != 0 )));
-
+		
 		if (horizontal != 0 && ((directionDifference.X == 0 && vertical == 0) || directionDifference.X != 0 ))
 		{
 			direction.X = horizontal;
@@ -50,6 +49,18 @@ public partial class Player : CharacterBody2D
 		if (direction != Vector2.Zero && !isMoving && canMove)
 		{
 			targetPosition = Position + (direction * tileSize);
+
+			Vector2I tilePos = tileMap.LocalToMap(tileMap.ToLocal(targetPosition));
+
+			TileData tileData = tileMap.GetCellTileData(tilePos);
+
+			string tileName = (string)tileData?.GetCustomData("Name");
+
+			// check the name of the tile to see if it is the current placeable tiles name or is highlighted
+			if (tileName != null && tileName != "floor")
+			{
+				return;
+			}
 			velocity = direction * Speed;
 			isMoving = true;
 			canMove = false;

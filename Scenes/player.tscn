@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfjxs"]
-size = Vector2(160, 160)
+size = Vector2(159, 159)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "moveCooldown")]
 script = ExtResource("1_7vq0b")
@@ -32,10 +32,9 @@ sprite_frames = SubResource("SpriteFrames_sy382")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_vfjxs")
 
 [node name="MoveCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 
 [connection signal="timeout" from="MoveCooldown" to="." method="OnMoveCooldownTimeout"]
