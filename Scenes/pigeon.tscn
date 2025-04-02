@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ns4fxxiq6pp8"]
+
+[ext_resource type="Texture2D" uid="uid://dgtlq61n1vyl1" path="res://Sprites/dog_and_pigeon.png" id="1_rpsag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlrk5"]
+atlas = ExtResource("1_rpsag")
+region = Rect2(0, 320, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dtlo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlrk5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="pigeon" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1dtlo")

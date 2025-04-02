@@ -17,6 +17,14 @@ public partial class GameManager : Node2D
 
 		return objects[tilePos.X, tilePos.Y];
 	}
+	public static string GetTileName(Vector2I tilePos, TileMapLayer tileMap)
+	{
+		TileData tileData = tileMap.GetCellTileData(tilePos);
+
+		string tileName = (string)tileData?.GetCustomData("Name");
+
+		return tileName;
+	}
 	public static string GetTileName(Vector2 position, TileMapLayer tileMap)
 	{
 		Vector2I tilePos = PositionToAtlasIndex(position, tileMap);

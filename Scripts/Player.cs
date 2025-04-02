@@ -66,7 +66,11 @@ public partial class Player : CharacterBody2D
 			chocolate.ShiftPosition((Vector2I)chocolate.Position.Normalized());
 			chocolate.Position = Position + chocolate.Position;
 			pushingChocolate = false;
-
+			
+			if (GameManager.GetTileName(chocolate.GridPosition, tileMap) == "pigeon")
+			{
+				GD.Print("game won");
+			}
 		}
 	}
 
@@ -104,22 +108,20 @@ public partial class Player : CharacterBody2D
 		{
 			targetPosition = Position + (direction * tileSize);
 
-			Vector2I tilePos = tileMap.LocalToMap(tileMap.ToLocal(targetPosition));
+			Vector2I tilePos = GameManager.PositionToAtlasIndex(targetPosition, tileMap);
 
-			TileData tileData = tileMap.GetCellTileData(tilePos);
+			string tileName = GameManager.GetTileName(targetPosition, tileMap);
 
-			string tileName = (string)tileData?.GetCustomData("Name");
 
 			Vector2I nextPos = tilePos + (Vector2I)direction;
-			TileData nextData = tileMap.GetCellTileData(nextPos);
 
-			string nextTileName = (string)nextData?.GetCustomData("Name");
+			string nextTileName = GameManager.GetTileName(nextPos, tileMap);
 
 			Node2D currentObject = GameManager.GetObject(tilePos);
 			Node2D nextObject = GameManager.GetObject(nextPos);
 
 
-			if ((tileName != null && tileName != "floor") || (currentObject != null && ((nextTileName != null && nextTileName != "floor") || nextObject != null)))
+			if ((tileName != null && tileName == "wall") || (currentObject != null && ((nextTileName != null && nextTileName == "wall") || nextObject != null)))
 			{
 				return;
 			}

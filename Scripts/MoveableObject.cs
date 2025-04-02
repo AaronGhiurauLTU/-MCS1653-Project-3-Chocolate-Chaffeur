@@ -9,7 +9,7 @@ public partial class MoveableObject : Node2D
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
 	protected Vector2I gridPosition;
-
+	public Vector2I GridPosition { get { return gridPosition; } }
 	private void OnBodyEntered(Node2D body)
 	{
 		if (body == player)

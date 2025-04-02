@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://bodvyrp7en4t8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
-[ext_resource type="Texture2D" uid="uid://86qdl04rb0fy" path="res://Sprites/CC-TileMap.png" id="1_jj5jt"]
+[ext_resource type="Texture2D" uid="uid://dgtlq61n1vyl1" path="res://Sprites/dog_and_pigeon.png" id="2_druxm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dswmn"]
-atlas = ExtResource("1_jj5jt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c56w"]
+atlas = ExtResource("2_druxm")
 region = Rect2(0, 0, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sy382"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dswmn")
+"texture": SubResource("AtlasTexture_4c56w")
 }],
 "loop": true,
 "name": &"default",
