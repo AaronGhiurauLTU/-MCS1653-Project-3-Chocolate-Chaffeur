@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	[Export] private TileMapLayer tileMap;
 
 	private bool isMoving = false,
-		pushingChocolate = false,
+		pushingObject = false,
 		canMove = true;
 	private MoveableObject movingObject;
 	private Vector2 originalPosition, targetPosition, previousRawDirection, previousDirection;
@@ -28,21 +28,21 @@ public partial class Player : CharacterBody2D
 		if (!isMoving)
 			return;
 
-		CallDeferred("ConnectChocolate", obj);
+		CallDeferred("ConnectObject", obj);
 	}
 
-	private void ConnectChocolate(MoveableObject chocolate)
+	private void ConnectObject(MoveableObject moveableObject)
 	{
-		chocolate.GetParent().RemoveChild(chocolate);
-		AddChild(chocolate);
-		chocolate.Position = Velocity.Normalized() * tileSize;
-		pushingChocolate = true;
-		movingObject = chocolate;
+		moveableObject.GetParent().RemoveChild(moveableObject);
+		AddChild(moveableObject);
+		moveableObject.Position = Velocity.Normalized() * tileSize;
+		pushingObject = true;
+		movingObject = moveableObject;
 	}
 
-	public void ChocolateHitObstacle(MoveableObject obj, Node2D body)
+	public void ObjectHitObstacle(MoveableObject obj, Node2D body)
 	{
-		if (!isMoving || !pushingChocolate)
+		if (!isMoving || !pushingObject)
 			return;
 
 		Position = originalPosition;
@@ -54,20 +54,20 @@ public partial class Player : CharacterBody2D
 		Velocity = Vector2.Zero;
 		isMoving = false;
 
-		CallDeferred("DisconnectChocolate", movingObject);
+		CallDeferred("DisconnectObject", movingObject);
 		moveCooldown.Start();
 	}
-	private void DisconnectChocolate(MoveableObject chocolate)
+	private void DisconnectObject(MoveableObject moveableObject)
 	{
-		if (pushingChocolate)
+		if (pushingObject)
 		{
-			RemoveChild(chocolate);
-			GetParent().AddChild(chocolate);
-			chocolate.ShiftPosition((Vector2I)chocolate.Position.Normalized());
-			chocolate.Position = Position + chocolate.Position;
-			pushingChocolate = false;
+			RemoveChild(moveableObject);
+			GetParent().AddChild(moveableObject);
+			moveableObject.ShiftPosition((Vector2I)moveableObject.Position.Normalized());
+			moveableObject.Position = Position + moveableObject.Position;
+			pushingObject = false;
 			
-			if (GameManager.GetTileName(chocolate.GridPosition, tileMap) == "pigeon")
+			if (moveableObject is Chocolate && GameManager.GetTileName(moveableObject.GridPosition, tileMap) == "pigeon")
 			{
 				GD.Print("game won");
 			}

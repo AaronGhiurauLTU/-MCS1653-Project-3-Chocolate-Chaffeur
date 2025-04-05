@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://d3rcuuthsekh4"]
+[gd_scene load_steps=8 format=4 uid="uid://d3rcuuthsekh4"]
 
-[ext_resource type="Texture2D" uid="uid://86qdl04rb0fy" path="res://Sprites/CC-TileMap.png" id="1_c4je7"]
+[ext_resource type="Texture2D" uid="uid://b7oho2i1caiqu" path="res://Sprites/CC-TileMap.png" id="1_c4je7"]
+[ext_resource type="PackedScene" uid="uid://odoylbec3ug0" path="res://Scenes/melon.tscn" id="2_6062y"]
 [ext_resource type="PackedScene" uid="uid://ct65u3mb1nns" path="res://Scenes/chocolate.tscn" id="2_isd4w"]
 [ext_resource type="PackedScene" uid="uid://bodvyrp7en4t8" path="res://Scenes/player.tscn" id="2_qwch4"]
 [ext_resource type="PackedScene" uid="uid://ns4fxxiq6pp8" path="res://Scenes/pigeon.tscn" id="4_whmdm"]
@@ -40,30 +41,32 @@ sources/0 = SubResource("TileSetAtlasSource_fojpo")
 
 [node name="Level" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Static" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="TileMaps" type="Node2D" parent="Node2D"]
+[node name="TileMaps" type="Node2D" parent="Static"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Node2D/TileMaps"]
+[node name="TileMap" type="TileMapLayer" parent="Static/TileMaps"]
+unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAABAAEAAAABAAAAAAACAAIAAAABAAAAAAADAAMAAAABAAAAAAAEAAQAAAABAAAAAAAFAAUAAAABAAAAAAAGAAYAAAABAAAAAAAIAAYAAAADAAAAAAAAAAYAAAADAAAAAAAAAAQAAAADAAAAAAAAAAIAAAADAAAAAAABAAMAAAABAAAAAAABAAUAAAADAAAAAAACAAQAAAABAAAAAAACAAYAAAABAAAAAAADAAUAAAADAAAAAAAEAAYAAAABAAAAAAADAAEAAAABAAAAAAACAAEAAAACAAAAAAABAAIAAAACAAAAAAAAAAMAAAADAAAAAAACAAMAAAACAAAAAAACAAUAAAADAAAAAAABAAQAAAACAAAAAAAAAAUAAAADAAAAAAABAAYAAAACAAAAAAADAAYAAAACAAAAAAADAAQAAAACAAAAAAADAAIAAAACAAAAAAAEAAEAAAACAAAAAAAEAAMAAAACAAAAAAAEAAUAAAACAAAAAAAFAAEAAAABAAAAAAAFAAIAAAACAAAAAAAFAAMAAAABAAAAAAAFAAQAAAACAAAAAAAFAAYAAAACAAAAAAAGAAEAAAACAAAAAAAGAAIAAAABAAAAAAAGAAMAAAADAAAAAAAGAAQAAAABAAAAAAAGAAUAAAACAAAAAAAHAAEAAAADAAAAAAAHAAIAAAADAAAAAAAHAAMAAAADAAAAAAAHAAQAAAACAAAAAAAHAAUAAAABAAAAAAAHAAYAAAADAAAAAAAIAAAAAAADAAAAAAAIAAEAAAACAAAAAAAIAAIAAAABAAAAAAAIAAMAAAACAAAAAAAIAAQAAAABAAAAAAAIAAUAAAACAAAAAAAJAAAAAAADAAAAAAAJAAEAAAABAAAAAAAJAAIAAAACAAAAAAAJAAMAAAABAAAAAAAJAAQAAAACAAAAAAAJAAUAAAABAAAAAAAJAAYAAAACAAAAAAAKAAAAAAADAAAAAAAKAAEAAAACAAAAAAAKAAIAAAABAAAAAAAKAAMAAAACAAAAAAAKAAQAAAABAAAAAAAKAAUAAAACAAAAAAAKAAYAAAABAAAAAAALAAAAAAADAAAAAAALAAEAAAABAAAAAAALAAIAAAACAAAAAAALAAMAAAABAAAAAAALAAQAAAACAAAAAAALAAUAAAABAAAAAAALAAYAAAACAAAAAAAAAAEAAAADAAAAAAAEAAIAAAABAAAAAAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAAAAcAAAADAAAAAAAMAAAAAAADAAAAAAANAAAAAAADAAAAAAANAAEAAAADAAAAAAANAAIAAAADAAAAAAANAAMAAAADAAAAAAANAAQAAAADAAAAAAANAAUAAAADAAAAAAANAAYAAAADAAAAAAANAAcAAAADAAAAAAANAAgAAAADAAAAAAAMAAgAAAADAAAAAAALAAgAAAADAAAAAAAKAAgAAAADAAAAAAAJAAgAAAADAAAAAAAIAAgAAAADAAAAAAAHAAgAAAADAAAAAAAGAAgAAAADAAAAAAAFAAgAAAADAAAAAAAEAAgAAAADAAAAAAADAAgAAAADAAAAAAACAAgAAAADAAAAAAABAAgAAAADAAAAAAAAAAgAAAADAAAAAAABAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAABAAAAAAAHAAcAAAABAAAAAAAJAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAYAAAABAAAAAAAMAAQAAAAAAAAAAAAMAAIAAAABAAAAAAAMAAEAAAACAAAAAAAMAAMAAAACAAAAAAAMAAUAAAACAAAAAAAMAAcAAAACAAAAAAAKAAcAAAACAAAAAAAIAAcAAAACAAAAAAAGAAcAAAACAAAAAAAEAAcAAAACAAAAAAACAAcAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_1etkq")
 
-[node name="Camera2D" type="Camera2D" parent="Node2D"]
+[node name="Camera2D" type="Camera2D" parent="Static"]
 position = Vector2(1120, 720)
 
 [node name="Player" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_qwch4")]
+unique_name_in_owner = true
 position = Vector2(720, 560)
-tileMap = NodePath("../Node2D/TileMaps/TileMapLayer")
+tileMap = NodePath("../Static/TileMaps/TileMap")
 
-[node name="Chocolate" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("2_isd4w")]
+[node name="Chocolate" parent="." instance=ExtResource("2_isd4w")]
 position = Vector2(400, 400)
-tileMap = NodePath("../Node2D/TileMaps/TileMapLayer")
-player = NodePath("../Player")
 
-[node name="Chocolate2" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("2_isd4w")]
+[node name="Chocolate2" parent="." instance=ExtResource("2_isd4w")]
 position = Vector2(1200, 720)
-tileMap = NodePath("../Node2D/TileMaps/TileMapLayer")
-player = NodePath("../Player")
 
 [node name="pigeon" parent="." instance=ExtResource("4_whmdm")]
 position = Vector2(2000, 720)
+
+[node name="Melon" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(880, 880)
