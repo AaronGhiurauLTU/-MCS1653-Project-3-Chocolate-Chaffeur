@@ -3,7 +3,8 @@ using System;
 
 public partial class Chocolate : MoveableObject
 {
-	[Export] private float meltSpeed = 0.03f;
+	[Export] private float meltSpeed = 0.03f,
+		coolSpeed = 0.03f;
 	private float color = 1;
 
 	// Called when the node enters the scene tree for the first time.
@@ -25,9 +26,17 @@ public partial class Chocolate : MoveableObject
 	{
 		string currentTile = GameManager.GetTileName(GridPosition, tileMap);
 
-		if (currentTile == "heater" && !isMoving)
+		if (!isMoving)
 		{
-			color = Mathf.MoveToward(color, 0, meltSpeed);
+			if (currentTile == "heater")
+			{
+				color = Mathf.MoveToward(color, 0, meltSpeed);
+			}
+			else
+			{
+				color = Mathf.MoveToward(color, 1, coolSpeed);
+			}
+			
 			Modulate = new Color(color, color, color);
 
 			if (color <= 0)
