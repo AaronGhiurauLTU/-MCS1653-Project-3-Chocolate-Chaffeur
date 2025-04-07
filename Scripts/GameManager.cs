@@ -41,6 +41,7 @@ public partial class GameManager : Node
 
 	public static void LoadLevel(int level)
 	{
+		objects = new Node2D[14, 9];
 		switch (level)
 		{
 			case 1:

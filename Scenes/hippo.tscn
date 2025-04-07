@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1huf68cj2k57"]
 
-[ext_resource type="Texture2D" uid="uid://bydjhwku6kxcw" path="res://Sprites/hippo.png" id="1_xk8pr"]
+[ext_resource type="Texture2D" uid="uid://bjdj2ggm6fihp" path="res://Sprites/hippo.png" id="1_xk8pr"]
 [ext_resource type="Script" path="res://Scripts/Hippo.cs" id="2_1gahl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcnol"]

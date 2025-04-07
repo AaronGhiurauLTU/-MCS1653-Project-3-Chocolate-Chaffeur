@@ -6,6 +6,7 @@ public partial class MoveableObject : TiledObject
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
 
+	public bool isMoving = false;
 	protected void OnBodyEntered(Node2D body)
 	{
 		if (body == player)

@@ -38,6 +38,7 @@ public partial class Player : CharacterBody2D
 		moveableObject.Position = Velocity.Normalized() * tileSize;
 		pushingObject = true;
 		movingObject = moveableObject;
+		moveableObject.isMoving = true;
 	}
 
 	public void MoveableObjectHitObstacle(MoveableObject obj, Node2D body)
@@ -66,19 +67,21 @@ public partial class Player : CharacterBody2D
 		return false;
 	}
 
-	public void TiledObjectCollidedWithObject(TiledObject obj, TiledObject body)
+	public bool TiledObjectCollidedWithObject(TiledObject obj, TiledObject body)
 	{
-		if (body is Chocolate)
+		if (obj is Hippo hippo && !hippo.Closed)
 		{
-			CallDeferred("ReloadLevel");
-			Engine.TimeScale = 0;
-		}
-		else if (body is Melon melon && obj is Hippo hippo)
-		{
-			hippo.Close();
+			if (body is Melon melon)
+			{
+				hippo.Close();
+			}
+
+			body.Destroy();
+
+			return true;
 		}
 
-		body.Destroy();
+		return false;
 	}
 
 	private void StopMoving()
@@ -109,6 +112,7 @@ public partial class Player : CharacterBody2D
 
 			movingObject.Position += Position;
 			pushingObject = false;
+			movingObject.isMoving = false;
 			
 			Vector2I tilePos = GameManager.PositionToAtlasIndex(movingObject.Position, tileMap);
 
@@ -116,9 +120,8 @@ public partial class Player : CharacterBody2D
 
 			if (currentObject != null && currentObject is not MoveableObject && currentObject is TiledObject tiledObject)
 			{
-				TiledObjectCollidedWithObject(tiledObject, movingObject);
-				
-				return;
+				if (TiledObjectCollidedWithObject(tiledObject, movingObject))
+					return;
 			}
 
 			movingObject.ShiftPosition(shift);

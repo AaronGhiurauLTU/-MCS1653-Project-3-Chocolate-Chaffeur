@@ -24,6 +24,7 @@ size = Vector2(145, 145)
 [node name="Chocolate" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_87mkc")
 script = ExtResource("2_f8ivg")
+meltSpeed = 0.01
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
