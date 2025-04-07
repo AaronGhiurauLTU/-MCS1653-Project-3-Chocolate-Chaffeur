@@ -1,8 +1,11 @@
 using Godot;
 using System;
 
-public partial class GameManager : Node2D
+public partial class GameManager : Node
 {
+	[Export] private int level = 1;
+	public static int currentLevel;
+	public static GameManager instance;
 	public static Node2D[,] objects = new Node2D[14, 9];
 
 	public static Vector2I PositionToAtlasIndex(Vector2 position, TileMapLayer tileMap)
@@ -35,9 +38,27 @@ public partial class GameManager : Node2D
 
 		return tileName;
 	}
+
+	public static void LoadLevel(int level)
+	{
+		switch (level)
+		{
+			case 1:
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level.tscn");
+				break;
+		}
+	}
+
+	public static void ReloadLevel()
+	{
+		LoadLevel(currentLevel);
+	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Engine.TimeScale = 1;
+		currentLevel = level;
+		instance = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

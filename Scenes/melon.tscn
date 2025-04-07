@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://odoylbec3ug0"]
 
-[ext_resource type="Texture2D" uid="uid://b7oho2i1caiqu" path="res://Sprites/CC-TileMap.png" id="1_svrm4"]
+[ext_resource type="Texture2D" uid="uid://c0otds7nlmfoq" path="res://Sprites/CC-TileMap.png" id="1_svrm4"]
 [ext_resource type="Script" path="res://Scripts/Melon.cs" id="2_4jk56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07obf"]

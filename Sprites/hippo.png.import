@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0otds7nlmfoq"
-path="res://.godot/imported/CC-TileMap.png-82bfd9359ccaf46961930f75ce6c2861.ctex"
+uid="uid://bydjhwku6kxcw"
+path="res://.godot/imported/hippo.png-7668b91aaf28c8d30c45b94b44bb3b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/CC-TileMap.png"
-dest_files=["res://.godot/imported/CC-TileMap.png-82bfd9359ccaf46961930f75ce6c2861.ctex"]
+source_file="res://Sprites/hippo.png"
+dest_files=["res://.godot/imported/hippo.png-7668b91aaf28c8d30c45b94b44bb3b39.ctex"]
 
 [params]
 

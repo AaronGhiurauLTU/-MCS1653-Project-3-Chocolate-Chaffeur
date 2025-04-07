@@ -1,16 +1,12 @@
 using Godot;
 using System;
 
-public partial class MoveableObject : Node2D
+public partial class MoveableObject : TiledObject
 {
-	protected TileMapLayer tileMap;
-	private Player player;
-
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
-	protected Vector2I gridPosition;
-	public Vector2I GridPosition { get { return gridPosition; } }
-	private void OnBodyEntered(Node2D body)
+
+	protected void OnBodyEntered(Node2D body)
 	{
 		if (body == player)
 		{
@@ -32,8 +28,8 @@ public partial class MoveableObject : Node2D
 		gridPosition = GameManager.PositionToAtlasIndex(Position, tileMap);
 		GameManager.objects[gridPosition.X, gridPosition.Y] = this;
 
-		this.Pushed += player.ChocolatePushed;
-		this.HitObstacle += player.ObjectHitObstacle;
+		this.Pushed += player.ObjectPushed;
+		this.HitObstacle += player.MoveableObjectHitObstacle;
 	}
 	
 	public void ShiftPosition(Vector2I shift)

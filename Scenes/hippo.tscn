@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1huf68cj2k57"]
+
+[ext_resource type="Texture2D" uid="uid://bydjhwku6kxcw" path="res://Sprites/hippo.png" id="1_xk8pr"]
+[ext_resource type="Script" path="res://Scripts/Hippo.cs" id="2_1gahl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnol"]
+atlas = ExtResource("1_xk8pr")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t46gf"]
+atlas = ExtResource("1_xk8pr")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87mkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnol")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t46gf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqrwt"]
+size = Vector2(145, 145)
+
+[node name="Hippo" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_87mkc")
+animation = &"close"
+autoplay = "default"
+script = ExtResource("2_1gahl")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vqrwt")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

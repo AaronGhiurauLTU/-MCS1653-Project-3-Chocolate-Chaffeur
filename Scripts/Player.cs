@@ -23,15 +23,15 @@ public partial class Player : CharacterBody2D
 		canMove = true;
 		moveCooldown.Stop();
 	}
-	public void ChocolatePushed(MoveableObject obj)
+	public void ObjectPushed(MoveableObject obj)
 	{
 		if (!isMoving)
 			return;
 
-		CallDeferred("ConnectObject", obj);
+		CallDeferred("ConnectMoveableObject", obj);
 	}
 
-	private void ConnectObject(MoveableObject moveableObject)
+	private void ConnectMoveableObject(MoveableObject moveableObject)
 	{
 		moveableObject.GetParent().RemoveChild(moveableObject);
 		AddChild(moveableObject);
@@ -40,7 +40,7 @@ public partial class Player : CharacterBody2D
 		movingObject = moveableObject;
 	}
 
-	public void ObjectHitObstacle(MoveableObject obj, Node2D body)
+	public void MoveableObjectHitObstacle(MoveableObject obj, Node2D body)
 	{
 		if (!isMoving || !pushingObject)
 			return;
@@ -49,27 +49,85 @@ public partial class Player : CharacterBody2D
 		StopMoving();
 	}
 
+	private void ReloadLevel()
+	{
+		GameManager.ReloadLevel();
+	}
+	
+	public bool TiledObjectCollidedWithPlayer(TiledObject obj)
+	{
+		if (obj is Hippo hippo && !hippo.Closed)
+		{
+			CallDeferred("ReloadLevel");
+			Engine.TimeScale = 0;
+			return true;
+		}
+
+		return false;
+	}
+
+	public void TiledObjectCollidedWithObject(TiledObject obj, TiledObject body)
+	{
+		if (body is Chocolate)
+		{
+			CallDeferred("ReloadLevel");
+			Engine.TimeScale = 0;
+		}
+		else if (body is Melon melon && obj is Hippo hippo)
+		{
+			hippo.Close();
+		}
+
+		body.Destroy();
+	}
+
 	private void StopMoving()
 	{
 		Velocity = Vector2.Zero;
 		isMoving = false;
 
-		CallDeferred("DisconnectObject", movingObject);
+		Vector2I tilePos = GameManager.PositionToAtlasIndex(Position, tileMap);
+
+		Node2D currentObject = GameManager.GetObject(tilePos);
+
+		if (currentObject != null && currentObject is not MoveableObject && currentObject is TiledObject tiledObject)
+		{
+			if (TiledObjectCollidedWithPlayer(tiledObject))
+				return;
+		}
+
+		CallDeferred("DisconnectMoveableObject");
 		moveCooldown.Start();
 	}
-	private void DisconnectObject(MoveableObject moveableObject)
+	private void DisconnectMoveableObject()
 	{
 		if (pushingObject)
 		{
-			RemoveChild(moveableObject);
-			GetParent().AddChild(moveableObject);
-			moveableObject.ShiftPosition((Vector2I)moveableObject.Position.Normalized());
-			moveableObject.Position = Position + moveableObject.Position;
+			RemoveChild(movingObject);
+			GetParent().AddChild(movingObject);
+			Vector2I shift = (Vector2I)movingObject.Position.Normalized();
+
+			movingObject.Position += Position;
 			pushingObject = false;
 			
-			if (moveableObject is Chocolate && GameManager.GetTileName(moveableObject.GridPosition, tileMap) == "pigeon")
+			Vector2I tilePos = GameManager.PositionToAtlasIndex(movingObject.Position, tileMap);
+
+			Node2D currentObject = GameManager.GetObject(tilePos);
+
+			if (currentObject != null && currentObject is not MoveableObject && currentObject is TiledObject tiledObject)
+			{
+				TiledObjectCollidedWithObject(tiledObject, movingObject);
+				
+				return;
+			}
+
+			movingObject.ShiftPosition(shift);
+
+			if (movingObject is Chocolate && GameManager.GetTileName(movingObject.GridPosition, tileMap) == "pigeon")
 			{
 				GD.Print("game won");
+				Engine.TimeScale = 0;
+				return;
 			}
 		}
 	}
@@ -78,12 +136,20 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		//GD.Print(canMove);
+		if (Input.IsActionPressed("reset"))
+		{
+			ReloadLevel();
+			return;
+		}
+
+		if (Engine.TimeScale == 0)
+			return;
+
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Vector2.Zero;
-		float horizontal = Input.GetAxis("ui_left", "ui_right");
-		float vertical = Input.GetAxis("ui_up", "ui_down");
+		float horizontal = Input.GetAxis("left", "right");
+		float vertical = Input.GetAxis("up", "down");
 
 		Vector2 rawDirection = new(horizontal, vertical);
 		Vector2 directionDifference = rawDirection - previousRawDirection;
@@ -121,7 +187,8 @@ public partial class Player : CharacterBody2D
 			Node2D nextObject = GameManager.GetObject(nextPos);
 
 
-			if ((tileName != null && tileName == "wall") || (currentObject != null && ((nextTileName != null && nextTileName == "wall") || nextObject != null)))
+			if ((tileName != null && tileName == "wall") || (currentObject != null && currentObject is MoveableObject 
+				&& ((nextTileName != null && nextTileName == "wall") || (nextObject != null && nextObject is MoveableObject))))
 			{
 				return;
 			}
@@ -148,6 +215,9 @@ public partial class Player : CharacterBody2D
 				Position = targetPosition;
 				velocity = Vector2.Zero;
 				StopMoving();
+
+				if (Engine.TimeScale == 0)
+					return;
 			}
 		}
 		else
