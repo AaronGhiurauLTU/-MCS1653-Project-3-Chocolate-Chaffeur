@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
 	[Export] private AnimatedSprite2D animatedSprite;
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
+	[Export] private Control pauseMenu;
 
 	private bool isMoving = false,
 		pushingObject = false,
@@ -16,7 +17,7 @@ public partial class Player : CharacterBody2D
 	private Vector2 originalPosition, targetPosition, previousRawDirection, previousDirection;
 	public override void _Ready()
 	{
-
+		pauseMenu.Visible = false;
 	}
 	private void OnMoveCooldownTimeout()
 	{
@@ -137,6 +138,16 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Engine.TimeScale == 0)
+		{
+			if (Input.IsActionJustPressed("pause")) 
+			{
+				pauseMenu.Visible = false;
+				Engine.TimeScale = 1;
+			}
+			return;
+		}
+
 		Vector2 velocity = Velocity;
 
 		if (Input.IsActionPressed("reset"))
@@ -144,9 +155,13 @@ public partial class Player : CharacterBody2D
 			ReloadLevel();
 			return;
 		}
-
-		if (Engine.TimeScale == 0)
+		else if (Input.IsActionJustPressed("pause")) 
+		{
+			pauseMenu.Visible = true;
+			Engine.TimeScale = 0;
 			return;
+		}
+
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.

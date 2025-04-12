@@ -41,6 +41,8 @@ public partial class GameManager : Node
 
 	public static void LoadLevel(int level)
 	{
+		currentLevel = level;
+		Engine.TimeScale = 1;
 		objects = new Node2D[14, 9];
 		switch (level)
 		{
