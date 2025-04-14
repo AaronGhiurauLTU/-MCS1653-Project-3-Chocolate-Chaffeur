@@ -4,10 +4,11 @@ using System;
 public partial class GameManager : Node
 {
 	[Export] private int level = 1;
+	[Export] private Player localPlayer;
 	public static int currentLevel;
 	public static GameManager instance;
 	public static Node2D[,] objects = new Node2D[14, 9];
-
+	public static Player player;
 	public static Vector2I PositionToAtlasIndex(Vector2 position, TileMapLayer tileMap)
 	{
 		return tileMap.LocalToMap(tileMap.ToLocal(position));
@@ -65,6 +66,7 @@ public partial class GameManager : Node
 		Engine.TimeScale = 1;
 		currentLevel = level;
 		instance = this;
+		player = localPlayer;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

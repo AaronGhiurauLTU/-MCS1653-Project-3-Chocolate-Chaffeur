@@ -76,8 +76,8 @@ tracks/1/keys = {
 "args": [100.0],
 "method": &"ScreenShake"
 }, {
-"args": [],
-"method": &"ReloadLevel"
+"args": ["Devoured!"],
+"method": &"ShowLoseMenu"
 }]
 }
 tracks/2/type = "value"

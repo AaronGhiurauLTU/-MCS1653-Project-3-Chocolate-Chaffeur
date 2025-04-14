@@ -4,7 +4,12 @@ using System;
 public partial class Menu : Control
 {
 	[Export] private VBoxContainer instructionsContainer, mainMenuContainer, creditsContainer;
+	[Export] Label label;
 
+	public void ChangeLabelText(string newText)
+	{
+		label.Text = newText;
+	}
 	private void OnContinuePressed()
 	{
 		Engine.TimeScale = 1;

@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cerbc2qw6ueo2"]
+[gd_scene load_steps=3 format=3 uid="uid://bnfynb37b8dsr"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_mju3e"]
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_wr3le"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m71s2"]
 font_size = 64
 outline_size = 22
 outline_color = Color(0, 0, 0, 1)
 
-[node name="GameWon" type="Control"]
+[node name="LevelLost" type="Control" node_paths=PackedStringArray("label")]
 z_index = 20
 layout_mode = 3
 anchors_preset = 15
@@ -15,7 +15,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mju3e")
+script = ExtResource("1_wr3le")
+label = NodePath("MarginContainer/VBoxContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,10 +37,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "All Chocolate Delivered!
-Game Won!"
+text = "Chocolate Consumed!"
 label_settings = SubResource("LabelSettings_m71s2")
-horizontal_alignment = 1
 
 [node name="Reset" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -64,5 +63,6 @@ theme_override_font_sizes/font_size = 20
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Reset" to="." method="OnResetPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartGame" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]

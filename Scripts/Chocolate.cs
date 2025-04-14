@@ -23,10 +23,10 @@ public partial class Chocolate : MoveableObject
 	}
 
 
-	public void DestroyChocolate()
+	public void DestroyChocolate(string text)
 	{
-		CallDeferred("ReloadLevel");
-		Engine.TimeScale = 0;
+		GameManager.player.ShowLoseMenu(text);
+		QueueFree();
 	}
 
 	public void ConnectToPigeon(Pigeon pigeon, Control winMenu)

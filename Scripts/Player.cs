@@ -9,7 +9,7 @@ public partial class Player : CharacterBody2D
 	[Export] private AnimationPlayer animationPlayer;
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
-	[Export] private Control pauseMenu, winMenu;
+	[Export] private Menu pauseMenu, winMenu, loseMenu;
 	[Export] private Pigeon pigeon;
 
 	private bool isMoving = false,
@@ -22,6 +22,7 @@ public partial class Player : CharacterBody2D
 	{
 		pauseMenu.Visible = false;
 		winMenu.Visible = false;
+		loseMenu.Visible = false;
 	}
 	private void OnMoveCooldownTimeout()
 	{
@@ -58,6 +59,13 @@ public partial class Player : CharacterBody2D
 	public void ReloadLevel()
 	{
 		GameManager.ReloadLevel();
+	}
+
+	public void ShowLoseMenu(string text)
+	{
+		loseMenu.Visible = true;
+		loseMenu.ChangeLabelText(text);
+		gettingEaten = true;
 	}
 	
 	public void ScreenShake(float strength)
