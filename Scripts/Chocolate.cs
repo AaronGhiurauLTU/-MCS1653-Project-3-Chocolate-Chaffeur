@@ -16,7 +16,7 @@ public partial class Chocolate : MoveableObject
 	{
 		GameManager.ReloadLevel();
 	}
-	public override void Destroy()
+	public void DestroyChocolate()
 	{
 		base.Destroy();
 		CallDeferred("ReloadLevel");

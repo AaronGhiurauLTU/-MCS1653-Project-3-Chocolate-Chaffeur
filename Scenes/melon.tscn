@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://odoylbec3ug0"]
+[gd_scene load_steps=9 format=3 uid="uid://odoylbec3ug0"]
 
-[ext_resource type="Texture2D" uid="uid://c0otds7nlmfoq" path="res://Sprites/CC-TileMap.png" id="1_svrm4"]
+[ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_svrm4"]
 [ext_resource type="Script" path="res://Scripts/Melon.cs" id="2_4jk56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07obf"]
@@ -21,14 +21,85 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqrwt"]
 size = Vector2(145, 145)
 
-[node name="Melon" type="AnimatedSprite2D"]
+[sub_resource type="Animation" id="Animation_gohnl"]
+resource_name = "destroy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qedjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm6tv"]
+_data = {
+"RESET": SubResource("Animation_qedjk"),
+"destroy": SubResource("Animation_gohnl")
+}
+
+[node name="Melon" type="AnimatedSprite2D" node_paths=PackedStringArray("animationPlayer")]
 sprite_frames = SubResource("SpriteFrames_87mkc")
 script = ExtResource("2_4jk56")
+animationPlayer = NodePath("AnimationPlayer")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_vqrwt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qm6tv")
+}
+speed_scale = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

@@ -5,7 +5,7 @@ public partial class MoveableObject : TiledObject
 {
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
-
+	[Export] private AnimationPlayer animationPlayer;
 	public bool isMoving = false;
 	protected void OnBodyEntered(Node2D body)
 	{
@@ -18,6 +18,13 @@ public partial class MoveableObject : TiledObject
 			GD.Print(body.Name);
 			EmitSignal(SignalName.HitObstacle, this, body);
 		}
+	}
+
+	public override void Destroy(bool queueFree = true)
+	{
+		base.Destroy(false);
+		
+		animationPlayer.Play("destroy");
 	}
 
 	// Called when the node enters the scene tree for the first time.

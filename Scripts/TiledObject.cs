@@ -19,9 +19,11 @@ public partial class TiledObject : AnimatedSprite2D
 		GameManager.objects[gridPosition.X, gridPosition.Y] = this;
 	}
 
-	public virtual void Destroy()
+	public virtual void Destroy(bool queueFree = true)
 	{
 		GameManager.objects[gridPosition.X, gridPosition.Y] = null;
-		QueueFree();
+
+		if (queueFree)
+			QueueFree();
 	}
 }

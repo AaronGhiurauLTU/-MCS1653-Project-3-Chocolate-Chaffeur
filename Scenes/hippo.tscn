@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1huf68cj2k57"]
+[gd_scene load_steps=9 format=3 uid="uid://b1huf68cj2k57"]
 
 [ext_resource type="Texture2D" uid="uid://bjdj2ggm6fihp" path="res://Sprites/hippo.png" id="1_xk8pr"]
 [ext_resource type="Script" path="res://Scripts/Hippo.cs" id="2_1gahl"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a3xq"]
+atlas = ExtResource("1_xk8pr")
+region = Rect2(0, 0, 160, 160)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcnol"]
 atlas = ExtResource("1_xk8pr")
 region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eof0"]
+atlas = ExtResource("1_xk8pr")
+region = Rect2(320, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t46gf"]
 atlas = ExtResource("1_xk8pr")
@@ -15,11 +23,17 @@ region = Rect2(0, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8a3xq")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jcnol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eof0")
 }],
-"loop": true,
+"loop": false,
 "name": &"close",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -37,6 +51,8 @@ size = Vector2(145, 145)
 sprite_frames = SubResource("SpriteFrames_87mkc")
 animation = &"close"
 autoplay = "default"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("2_1gahl")
 
 [node name="Area2D" type="Area2D" parent="."]
