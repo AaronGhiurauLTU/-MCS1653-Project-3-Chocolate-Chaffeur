@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	[Export] private AnimatedSprite2D animatedSprite;
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
-	[Export] private Control pauseMenu;
+	[Export] private Control pauseMenu, winMenu;
 
 	private bool isMoving = false,
 		pushingObject = false,
@@ -18,6 +18,7 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		pauseMenu.Visible = false;
+		winMenu.Visible = false;
 	}
 	private void OnMoveCooldownTimeout()
 	{
@@ -129,8 +130,8 @@ public partial class Player : CharacterBody2D
 
 			if (movingObject is Chocolate && GameManager.GetTileName(movingObject.GridPosition, tileMap) == "pigeon")
 			{
-				GD.Print("game won");
 				Engine.TimeScale = 0;
+				winMenu.Visible = true;
 				return;
 			}
 		}
@@ -138,6 +139,9 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (winMenu.Visible)
+			return;
+
 		if (Engine.TimeScale == 0)
 		{
 			if (Input.IsActionJustPressed("pause")) 

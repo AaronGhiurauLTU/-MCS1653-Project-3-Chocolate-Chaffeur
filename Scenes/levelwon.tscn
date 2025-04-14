@@ -1,20 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://byq8ii2lqu8b2"]
+[gd_scene load_steps=3 format=3 uid="uid://b4fynipgv2lqf"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_x74jy"]
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_vo3k7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m71s2"]
 font_size = 64
 outline_size = 22
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" type="Control"]
+[node name="LevelWon" type="Control"]
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x74jy")
+script = ExtResource("1_vo3k7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,16 +36,15 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Paused"
+text = "Chocolate Delivered!"
 label_settings = SubResource("LabelSettings_m71s2")
 
 [node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Continue"
+text = "Next Level"
 
 [node name="Reset" type="Button" parent="MarginContainer/VBoxContainer"]
-z_index = 20
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Reset Level
@@ -60,7 +60,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="OnContinuePressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="OnNextLevelPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]

@@ -21,6 +21,10 @@ public partial class Menu : Control
 		GameManager.LoadLevel(1);
 	}
 
+	private void OnNextLevelPressed()
+	{
+		GameManager.LoadLevel(++GameManager.currentLevel);
+	}
 	private void OnMainMenuPressed()
 	{
 		Engine.TimeScale = 1;

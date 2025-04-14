@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=4 uid="uid://cdeaxch6ouody"]
+
+[ext_resource type="Texture2D" uid="uid://c0otds7nlmfoq" path="res://Sprites/CC-TileMap.png" id="1_dhtlr"]
+[ext_resource type="PackedScene" uid="uid://bodvyrp7en4t8" path="res://Scenes/player.tscn" id="2_igqcx"]
+[ext_resource type="PackedScene" uid="uid://ct65u3mb1nns" path="res://Scenes/chocolate.tscn" id="3_13qid"]
+[ext_resource type="PackedScene" uid="uid://b1huf68cj2k57" path="res://Scenes/hippo.tscn" id="4_35bte"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="5_inww3"]
+[ext_resource type="PackedScene" uid="uid://ns4fxxiq6pp8" path="res://Scenes/pigeon.tscn" id="7_6dn1d"]
+[ext_resource type="PackedScene" uid="uid://byq8ii2lqu8b2" path="res://Scenes/pausemenu.tscn" id="8_7ejvx"]
+[ext_resource type="PackedScene" uid="uid://b4fynipgv2lqf" path="res://Scenes/levelwon.tscn" id="9_xi5lq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fojpo"]
+texture = ExtResource("1_dhtlr")
+texture_region_size = Vector2i(160, 160)
+2:0/0 = 0
+2:0/0/custom_data_0 = "floor"
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 80, -80, 80, 80, -80, 80)
+3:0/0/custom_data_0 = "wall"
+1:1/0 = 0
+1:1/0/custom_data_0 = "melon"
+2:1/0 = 0
+2:1/0/custom_data_0 = "hippo"
+3:1/0 = 0
+3:1/0/custom_data_0 = "heater"
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:0/0 = 0
+0:0/0/custom_data_0 = "pigeon"
+1:0/0 = 0
+1:0/0/custom_data_0 = "floor"
+0:1/0 = 0
+0:1/0/custom_data_0 = "chocolate"
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1etkq"]
+tile_size = Vector2i(160, 160)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "Name"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("TileSetAtlasSource_fojpo")
+
+[node name="Level" type="Node2D"]
+
+[node name="Static" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TileMaps" type="Node2D" parent="Static"]
+
+[node name="TileMap" type="TileMapLayer" parent="Static/TileMaps"]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAABAAEAAAADAAAAAAACAAIAAAABAAAAAAADAAMAAAABAAAAAAAEAAQAAAADAAAAAAAFAAUAAAABAAAAAAAGAAYAAAABAAAAAAAIAAYAAAADAAEAAAAAAAYAAAADAAAAAAAAAAQAAAADAAAAAAAAAAIAAAADAAAAAAABAAMAAAABAAAAAAABAAUAAAABAAAAAAACAAQAAAABAAAAAAACAAYAAAADAAEAAAADAAUAAAABAAAAAAAEAAYAAAABAAAAAAADAAEAAAADAAAAAAACAAEAAAADAAAAAAABAAIAAAACAAAAAAAAAAMAAAADAAAAAAACAAMAAAACAAAAAAACAAUAAAACAAAAAAABAAQAAAACAAAAAAAAAAUAAAADAAAAAAABAAYAAAACAAAAAAADAAYAAAACAAAAAAADAAQAAAACAAAAAAADAAIAAAACAAAAAAAEAAEAAAADAAAAAAAEAAMAAAADAAAAAAAEAAUAAAACAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAADAAAAAAAFAAYAAAACAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAACAAAAAAAGAAQAAAADAAAAAAAGAAUAAAADAAAAAAAHAAEAAAADAAAAAAAHAAIAAAACAAAAAAAHAAMAAAADAAEAAAAHAAQAAAACAAAAAAAHAAUAAAABAAAAAAAHAAYAAAACAAAAAAAIAAAAAAADAAAAAAAIAAEAAAADAAAAAAAIAAIAAAABAAAAAAAIAAMAAAACAAAAAAAIAAQAAAADAAAAAAAIAAUAAAACAAAAAAAJAAAAAAADAAAAAAAJAAEAAAADAAAAAAAJAAIAAAACAAAAAAAJAAMAAAABAAAAAAAJAAQAAAADAAAAAAAJAAUAAAABAAAAAAAJAAYAAAACAAAAAAAKAAAAAAADAAAAAAAKAAEAAAADAAAAAAAKAAIAAAABAAAAAAAKAAMAAAACAAAAAAAKAAQAAAABAAAAAAAKAAUAAAACAAAAAAAKAAYAAAABAAAAAAALAAAAAAADAAAAAAALAAEAAAADAAAAAAALAAIAAAACAAAAAAALAAMAAAABAAAAAAALAAQAAAACAAAAAAALAAUAAAABAAAAAAALAAYAAAACAAAAAAAAAAEAAAADAAAAAAAEAAIAAAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAAAAcAAAADAAAAAAAMAAAAAAADAAAAAAANAAAAAAADAAAAAAANAAEAAAADAAAAAAANAAIAAAADAAAAAAANAAMAAAADAAAAAAANAAQAAAADAAAAAAANAAUAAAADAAAAAAANAAYAAAADAAAAAAANAAcAAAADAAAAAAANAAgAAAADAAAAAAAMAAgAAAADAAAAAAALAAgAAAADAAAAAAAKAAgAAAADAAAAAAAJAAgAAAADAAAAAAAIAAgAAAADAAAAAAAHAAgAAAADAAAAAAAGAAgAAAADAAAAAAAFAAgAAAADAAAAAAAEAAgAAAADAAAAAAADAAgAAAADAAAAAAACAAgAAAADAAAAAAABAAgAAAADAAAAAAAAAAgAAAADAAAAAAABAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAABAAAAAAAHAAcAAAABAAAAAAAJAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAYAAAABAAAAAAAMAAQAAAABAAAAAAAMAAIAAAABAAAAAAAMAAEAAAADAAAAAAAMAAMAAAACAAAAAAAMAAUAAAACAAAAAAAMAAcAAAACAAAAAAAKAAcAAAACAAAAAAAIAAcAAAACAAAAAAAGAAcAAAADAAAAAAAEAAcAAAACAAAAAAACAAcAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_1etkq")
+
+[node name="Camera2D" type="Camera2D" parent="Static"]
+position = Vector2(1120, 800)
+
+[node name="Player" parent="." node_paths=PackedStringArray("tileMap", "pauseMenu", "winMenu") instance=ExtResource("2_igqcx")]
+unique_name_in_owner = true
+position = Vector2(240, 400)
+tileMap = NodePath("../Static/TileMaps/TileMap")
+pauseMenu = NodePath("../PauseMenu")
+winMenu = NodePath("../LevelWon")
+
+[node name="Chocolate2" parent="." instance=ExtResource("3_13qid")]
+position = Vector2(400, 560)
+
+[node name="Hippo" parent="." instance=ExtResource("4_35bte")]
+position = Vector2(240, 1040)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("5_inww3")
+
+[node name="pigeon" parent="." instance=ExtResource("7_6dn1d")]
+position = Vector2(880, 560)
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_7ejvx")]
+visible = false
+offset_left = 1120.0
+offset_top = 800.0
+offset_right = 1120.0
+offset_bottom = 800.0
+
+[node name="LevelWon" parent="." instance=ExtResource("9_xi5lq")]
+visible = false
+offset_left = 1120.0
+offset_top = 844.0
+offset_right = 1120.0
+offset_bottom = 844.0

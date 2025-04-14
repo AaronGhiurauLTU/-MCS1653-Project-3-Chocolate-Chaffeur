@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3rcuuthsekh4"]
+[gd_scene load_steps=12 format=4 uid="uid://d3rcuuthsekh4"]
 
 [ext_resource type="Texture2D" uid="uid://c0otds7nlmfoq" path="res://Sprites/CC-TileMap.png" id="1_c4je7"]
 [ext_resource type="PackedScene" uid="uid://b1huf68cj2k57" path="res://Scenes/hippo.tscn" id="2_78c4h"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bodvyrp7en4t8" path="res://Scenes/player.tscn" id="2_qwch4"]
 [ext_resource type="PackedScene" uid="uid://ns4fxxiq6pp8" path="res://Scenes/pigeon.tscn" id="4_whmdm"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="7_apf88"]
+[ext_resource type="PackedScene" uid="uid://cerbc2qw6ueo2" path="res://Scenes/gamewon.tscn" id="8_3yd6b"]
 [ext_resource type="PackedScene" uid="uid://byq8ii2lqu8b2" path="res://Scenes/pausemenu.tscn" id="8_al0o0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fojpo"]
@@ -60,20 +61,18 @@ tile_set = SubResource("TileSet_1etkq")
 [node name="Camera2D" type="Camera2D" parent="Static"]
 position = Vector2(1120, 800)
 
-[node name="Player" parent="." node_paths=PackedStringArray("tileMap", "pauseMenu") instance=ExtResource("2_qwch4")]
+[node name="Player" parent="." node_paths=PackedStringArray("tileMap", "pauseMenu", "winMenu") instance=ExtResource("2_qwch4")]
 unique_name_in_owner = true
 position = Vector2(240, 400)
 tileMap = NodePath("../Static/TileMaps/TileMap")
 pauseMenu = NodePath("../PauseMenu")
+winMenu = NodePath("../GameWon")
 
 [node name="Chocolate2" parent="." instance=ExtResource("2_isd4w")]
 position = Vector2(400, 560)
 
 [node name="Hippo" parent="." instance=ExtResource("2_78c4h")]
 position = Vector2(240, 1040)
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("7_apf88")
 
 [node name="Melon7" parent="." instance=ExtResource("2_6062y")]
 position = Vector2(1680, 720)
@@ -135,7 +134,19 @@ position = Vector2(1840, 400)
 [node name="Hippo10" parent="." instance=ExtResource("2_78c4h")]
 position = Vector2(400, 1200)
 
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("7_apf88")
+level = 2
+
+[node name="GameWon" parent="." instance=ExtResource("8_3yd6b")]
+visible = false
+offset_left = 1120.0
+offset_top = 800.0
+offset_right = 1120.0
+offset_bottom = 800.0
+
 [node name="PauseMenu" parent="." instance=ExtResource("8_al0o0")]
+visible = false
 offset_left = 1120.0
 offset_top = 800.0
 offset_right = 1120.0
