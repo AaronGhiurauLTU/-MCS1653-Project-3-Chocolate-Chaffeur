@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=4 uid="uid://d3rcuuthsekh4"]
+[gd_scene load_steps=13 format=4 uid="uid://d3rcuuthsekh4"]
 
 [ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_c4je7"]
-[ext_resource type="PackedScene" uid="uid://b1huf68cj2k57" path="res://Scenes/hippo.tscn" id="2_78c4h"]
 [ext_resource type="PackedScene" uid="uid://odoylbec3ug0" path="res://Scenes/melon.tscn" id="2_6062y"]
 [ext_resource type="Script" path="res://Scripts/CameraEffects.cs" id="2_hk6kq"]
 [ext_resource type="PackedScene" uid="uid://ct65u3mb1nns" path="res://Scenes/chocolate.tscn" id="2_isd4w"]
 [ext_resource type="PackedScene" uid="uid://bodvyrp7en4t8" path="res://Scenes/player.tscn" id="2_qwch4"]
 [ext_resource type="PackedScene" uid="uid://ns4fxxiq6pp8" path="res://Scenes/pigeon.tscn" id="4_whmdm"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="7_apf88"]
-[ext_resource type="PackedScene" uid="uid://cerbc2qw6ueo2" path="res://Scenes/gamewon.tscn" id="8_3yd6b"]
 [ext_resource type="PackedScene" uid="uid://byq8ii2lqu8b2" path="res://Scenes/pausemenu.tscn" id="8_al0o0"]
+[ext_resource type="PackedScene" uid="uid://b4fynipgv2lqf" path="res://Scenes/levelwon.tscn" id="10_ct6mp"]
 [ext_resource type="PackedScene" uid="uid://bnfynb37b8dsr" path="res://Scenes/levellost.tscn" id="11_svbtm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fojpo"]
@@ -57,7 +56,7 @@ unique_name_in_owner = true
 
 [node name="TileMap" type="TileMapLayer" parent="Static/TileMaps"]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAABAAEAAAADAAAAAAACAAIAAAABAAAAAAADAAMAAAABAAAAAAAEAAQAAAADAAAAAAAFAAUAAAACAAAAAAAGAAYAAAABAAAAAAAIAAYAAAADAAEAAAAAAAYAAAADAAAAAAAAAAQAAAADAAAAAAAAAAIAAAADAAAAAAABAAMAAAABAAAAAAABAAUAAAABAAAAAAACAAQAAAABAAAAAAACAAYAAAADAAEAAAADAAUAAAABAAAAAAAEAAYAAAABAAAAAAADAAEAAAADAAAAAAACAAEAAAADAAAAAAABAAIAAAABAAAAAAAAAAMAAAADAAAAAAACAAMAAAABAAAAAAACAAUAAAABAAAAAAABAAQAAAACAAAAAAAAAAUAAAADAAAAAAABAAYAAAACAAAAAAADAAYAAAACAAAAAAADAAQAAAABAAAAAAADAAIAAAABAAAAAAAEAAEAAAADAAAAAAAEAAMAAAADAAAAAAAEAAUAAAABAAAAAAAFAAEAAAADAAAAAAAFAAIAAAADAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAADAAAAAAAFAAYAAAABAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAABAAAAAAAGAAQAAAADAAAAAAAGAAUAAAADAAAAAAAHAAEAAAADAAAAAAAHAAIAAAABAAAAAAAHAAMAAAADAAEAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAHAAYAAAABAAAAAAAIAAAAAAADAAAAAAAIAAEAAAADAAAAAAAIAAIAAAABAAAAAAAIAAMAAAABAAAAAAAIAAQAAAADAAAAAAAIAAUAAAACAAAAAAAJAAAAAAADAAAAAAAJAAEAAAADAAAAAAAJAAIAAAABAAAAAAAJAAMAAAABAAAAAAAJAAQAAAADAAAAAAAJAAUAAAABAAAAAAAJAAYAAAABAAAAAAAKAAAAAAADAAAAAAAKAAEAAAADAAAAAAAKAAIAAAABAAAAAAAKAAMAAAACAAAAAAAKAAQAAAABAAAAAAAKAAUAAAABAAAAAAAKAAYAAAABAAAAAAALAAAAAAADAAAAAAALAAEAAAADAAAAAAALAAIAAAACAAAAAAALAAMAAAABAAAAAAALAAQAAAABAAAAAAALAAUAAAABAAAAAAALAAYAAAABAAAAAAAAAAEAAAADAAAAAAAEAAIAAAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAAAAcAAAADAAAAAAAMAAAAAAADAAAAAAANAAAAAAADAAAAAAANAAEAAAADAAAAAAANAAIAAAADAAAAAAANAAMAAAADAAAAAAANAAQAAAADAAAAAAANAAUAAAADAAAAAAANAAYAAAADAAAAAAANAAcAAAADAAAAAAANAAgAAAADAAAAAAAMAAgAAAADAAAAAAALAAgAAAADAAAAAAAKAAgAAAADAAAAAAAJAAgAAAADAAAAAAAIAAgAAAADAAAAAAAHAAgAAAADAAAAAAAGAAgAAAADAAAAAAAFAAgAAAADAAAAAAAEAAgAAAADAAAAAAADAAgAAAADAAAAAAACAAgAAAADAAAAAAABAAgAAAADAAAAAAAAAAgAAAADAAAAAAABAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAABAAAAAAAHAAcAAAABAAAAAAAJAAcAAAABAAAAAAALAAcAAAACAAAAAAAMAAYAAAABAAAAAAAMAAQAAAABAAAAAAAMAAIAAAABAAAAAAAMAAEAAAADAAAAAAAMAAMAAAABAAAAAAAMAAUAAAABAAAAAAAMAAcAAAABAAAAAAAKAAcAAAACAAAAAAAIAAcAAAABAAAAAAAGAAcAAAADAAAAAAAEAAcAAAABAAAAAAACAAcAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAEAAAADAAAAAAACAAIAAAABAAAAAAADAAMAAAABAAAAAAAEAAQAAAADAAAAAAAFAAUAAAACAAAAAAAGAAYAAAABAAAAAAAIAAYAAAABAAAAAAAAAAYAAAADAAAAAAAAAAQAAAADAAAAAAAAAAIAAAADAAAAAAABAAMAAAABAAAAAAABAAUAAAADAAAAAAACAAQAAAABAAAAAAACAAYAAAABAAAAAAADAAUAAAADAAEAAAAEAAYAAAABAAAAAAADAAEAAAADAAAAAAACAAEAAAADAAAAAAABAAIAAAABAAAAAAAAAAMAAAADAAAAAAACAAMAAAABAAAAAAACAAUAAAADAAEAAAABAAQAAAACAAAAAAAAAAUAAAADAAAAAAABAAYAAAACAAAAAAADAAYAAAACAAAAAAADAAQAAAABAAAAAAADAAIAAAABAAAAAAAEAAEAAAADAAAAAAAEAAMAAAADAAAAAAAEAAUAAAADAAAAAAAFAAEAAAADAAAAAAAFAAIAAAABAAAAAAAFAAMAAAABAAAAAAAFAAQAAAABAAAAAAAFAAYAAAABAAAAAAAGAAEAAAADAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAABAAAAAAAGAAUAAAABAAAAAAAHAAEAAAADAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAAHAAQAAAABAAAAAAAHAAUAAAABAAAAAAAHAAYAAAABAAAAAAAIAAAAAAADAAAAAAAIAAEAAAADAAAAAAAIAAIAAAABAAAAAAAIAAMAAAABAAAAAAAIAAQAAAABAAAAAAAIAAUAAAABAAAAAAAJAAAAAAADAAAAAAAJAAEAAAADAAAAAAAJAAIAAAABAAAAAAAJAAMAAAABAAAAAAAJAAQAAAABAAAAAAAJAAUAAAABAAAAAAAJAAYAAAABAAAAAAAKAAAAAAADAAAAAAAKAAEAAAADAAAAAAAKAAIAAAABAAAAAAAKAAMAAAACAAAAAAAKAAQAAAABAAAAAAAKAAUAAAABAAAAAAAKAAYAAAABAAAAAAALAAAAAAADAAAAAAALAAEAAAADAAAAAAALAAIAAAACAAAAAAALAAMAAAADAAEAAAALAAQAAAABAAAAAAALAAUAAAABAAAAAAALAAYAAAABAAAAAAAAAAEAAAADAAAAAAAEAAIAAAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAFAAAAAAADAAAAAAAGAAAAAAADAAAAAAAHAAAAAAADAAAAAAAAAAcAAAADAAAAAAAMAAAAAAADAAAAAAANAAAAAAADAAAAAAANAAEAAAADAAAAAAANAAIAAAADAAAAAAANAAMAAAADAAAAAAANAAQAAAADAAAAAAANAAUAAAADAAAAAAANAAYAAAADAAAAAAANAAcAAAADAAAAAAANAAgAAAADAAAAAAAMAAgAAAADAAAAAAALAAgAAAADAAAAAAAKAAgAAAADAAAAAAAJAAgAAAADAAAAAAAIAAgAAAADAAAAAAAHAAgAAAADAAAAAAAGAAgAAAADAAAAAAAFAAgAAAADAAAAAAAEAAgAAAADAAAAAAADAAgAAAADAAAAAAACAAgAAAADAAAAAAABAAgAAAADAAAAAAAAAAgAAAADAAAAAAABAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAABAAAAAAAHAAcAAAABAAAAAAAJAAcAAAABAAAAAAALAAcAAAACAAAAAAAMAAYAAAABAAAAAAAMAAQAAAADAAEAAAAMAAIAAAAAAAAAAAAMAAEAAAADAAAAAAAMAAMAAAABAAAAAAAMAAUAAAABAAAAAAAMAAcAAAABAAAAAAAKAAcAAAACAAAAAAAIAAcAAAABAAAAAAAGAAcAAAABAAAAAAAEAAcAAAABAAAAAAACAAcAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_1etkq")
 
 [node name="Camera2D" type="Camera2D" parent="Static"]
@@ -69,87 +68,83 @@ unique_name_in_owner = true
 position = Vector2(240, 400)
 tileMap = NodePath("../Static/TileMaps/TileMap")
 pauseMenu = NodePath("../PauseMenu")
-winMenu = NodePath("../GameWon")
+winMenu = NodePath("../LevelWon")
 loseMenu = NodePath("../LevelLost")
 pigeon = NodePath("../pigeon_parent")
 
 [node name="Chocolate2" parent="." instance=ExtResource("2_isd4w")]
 position = Vector2(400, 560)
 
-[node name="Hippo" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(240, 1040)
-
-[node name="Melon7" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(1680, 720)
-
-[node name="Melon8" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(1840, 720)
-
-[node name="Melon9" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(2000, 720)
-
-[node name="Hippo6" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1360, 560)
-
-[node name="Hippo7" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1520, 560)
-
 [node name="Melon" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(240, 880)
+position = Vector2(880, 1200)
 
 [node name="Melon2" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(400, 1040)
+position = Vector2(560, 880)
 
 [node name="Melon3" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(720, 880)
+position = Vector2(880, 1040)
 
 [node name="Melon4" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(720, 1040)
-
-[node name="Melon5" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(720, 1200)
-
-[node name="Melon6" parent="." instance=ExtResource("2_6062y")]
-position = Vector2(1200, 1040)
-
-[node name="Hippo2" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1360, 1200)
-
-[node name="pigeon_parent" parent="." instance=ExtResource("4_whmdm")]
-position = Vector2(880, 560)
-
-[node name="Hippo3" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1040, 560)
-
-[node name="Hippo4" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1520, 1040)
-
-[node name="Hippo5" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(1200, 400)
-
-[node name="Melon10" parent="." instance=ExtResource("2_6062y")]
 position = Vector2(1200, 720)
 
-[node name="Hippo8" parent="." instance=ExtResource("2_78c4h")]
+[node name="Melon5" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1360, 880)
+
+[node name="Melon6" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1520, 1040)
+
+[node name="Melon7" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1680, 1200)
+
+[node name="Melon8" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1360, 1200)
+
+[node name="Melon9" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1200, 1040)
+
+[node name="Melon10" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1520, 720)
+
+[node name="Melon21" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1520, 560)
+
+[node name="Melon11" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1680, 880)
+
+[node name="Melon12" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1840, 1040)
+
+[node name="Melon15" parent="." instance=ExtResource("2_6062y")]
 position = Vector2(2000, 880)
 
-[node name="Hippo9" parent="." instance=ExtResource("2_78c4h")]
+[node name="Melon13" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(2000, 1200)
+
+[node name="Melon14" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1840, 720)
+
+[node name="Melon16" parent="." instance=ExtResource("2_6062y")]
 position = Vector2(1840, 400)
 
-[node name="Hippo10" parent="." instance=ExtResource("2_78c4h")]
-position = Vector2(400, 1200)
+[node name="Melon17" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1680, 560)
+
+[node name="Melon18" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1520, 400)
+
+[node name="Melon19" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1360, 560)
+
+[node name="Melon20" parent="." instance=ExtResource("2_6062y")]
+position = Vector2(1200, 400)
+
+[node name="pigeon_parent" parent="." instance=ExtResource("4_whmdm")]
+position = Vector2(2000, 400)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("localPlayer")]
 script = ExtResource("7_apf88")
 level = 3
 localPlayer = NodePath("../Player")
-
-[node name="GameWon" parent="." instance=ExtResource("8_3yd6b")]
-visible = false
-offset_left = 1120.0
-offset_top = 800.0
-offset_right = 1120.0
-offset_bottom = 800.0
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_al0o0")]
 visible = false
@@ -164,3 +159,10 @@ offset_left = 1104.0
 offset_top = 720.0
 offset_right = 1104.0
 offset_bottom = 720.0
+
+[node name="LevelWon" parent="." instance=ExtResource("10_ct6mp")]
+visible = false
+offset_left = 1120.0
+offset_top = 844.0
+offset_right = 1120.0
+offset_bottom = 844.0

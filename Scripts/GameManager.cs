@@ -56,6 +56,15 @@ public partial class GameManager : Node
 			case 3:
 				instance.GetTree().ChangeSceneToFile("res://Scenes/level3.tscn");
 				break;
+			case 4:
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level4.tscn");
+				break;
+			case 5:
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level5.tscn");
+				break;
+			case 6:
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level6.tscn");
+				break;
 		}
 	}
 

@@ -50,6 +50,12 @@ theme_override_font_sizes/font_size = 20
 text = "Reset Level
 "
 
+[node name="RestartGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restart Game
+"
+
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -62,5 +68,6 @@ text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="OnNextLevelPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Reset" to="." method="OnResetPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartGame" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]
