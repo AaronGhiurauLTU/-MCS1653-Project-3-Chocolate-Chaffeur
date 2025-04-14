@@ -28,6 +28,18 @@ public partial class Chocolate : MoveableObject
 		CallDeferred("ReloadLevel");
 		Engine.TimeScale = 0;
 	}
+
+	public void ConnectToPigeon(Pigeon pigeon, Control winMenu)
+	{
+		GetParent().RemoveChild(this);
+		pigeon.GetNode("pigeon").AddChild(this);
+		this.Position = Vector2.Zero;
+		animationPlayer.Play("shrink");
+		pigeon.Fly(winMenu);
+
+		GD.Print(GetParent().Name);
+	}
+
 	public override void _Process(double delta)
 	{
 		string currentTile = GameManager.GetTileName(GridPosition, tileMap);

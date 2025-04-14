@@ -10,6 +10,7 @@ public partial class Player : CharacterBody2D
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
 	[Export] private Control pauseMenu, winMenu;
+	[Export] private Pigeon pigeon;
 
 	private bool isMoving = false,
 		pushingObject = false,
@@ -139,10 +140,11 @@ public partial class Player : CharacterBody2D
 
 			movingObject.ShiftPosition(shift);
 
-			if (movingObject is Chocolate && GameManager.GetTileName(movingObject.GridPosition, tileMap) == "pigeon")
+			if (movingObject is Chocolate chocolate && GameManager.GetTileName(movingObject.GridPosition, tileMap) == "pigeon")
 			{
-				Engine.TimeScale = 0;
-				winMenu.Visible = true;
+				chocolate.ConnectToPigeon(pigeon, winMenu);
+				// Engine.TimeScale = 0;
+				// winMenu.Visible = true;
 				return;
 			}
 		}

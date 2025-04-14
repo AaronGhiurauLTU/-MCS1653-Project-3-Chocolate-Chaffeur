@@ -5,7 +5,7 @@ public partial class MoveableObject : TiledObject
 {
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
-	[Export] private AnimationPlayer animationPlayer;
+	[Export] protected AnimationPlayer animationPlayer;
 	
 	public bool isMoving = false;
 	protected void OnBodyEntered(Node2D body)

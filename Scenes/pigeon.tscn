@@ -1,10 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://ns4fxxiq6pp8"]
+[gd_scene load_steps=12 format=3 uid="uid://ns4fxxiq6pp8"]
 
-[ext_resource type="Texture2D" uid="uid://lp8bty2eac2w" path="res://Sprites/dog_and_pigeon.png" id="1_rpsag"]
+[ext_resource type="Texture2D" uid="uid://oa14fdg3sn5r" path="res://Sprites/dog_and_pigeon.png" id="1_rpsag"]
+[ext_resource type="Script" path="res://Scripts/Pigeon.cs" id="2_lhytm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlrk5"]
 atlas = ExtResource("1_rpsag")
 region = Rect2(0, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7lu"]
+atlas = ExtResource("1_rpsag")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jgdt"]
+atlas = ExtResource("1_rpsag")
+region = Rect2(480, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtkfo"]
+atlas = ExtResource("1_rpsag")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6vnf"]
+atlas = ExtResource("1_rpsag")
+region = Rect2(160, 320, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1dtlo"]
 animations = [{
@@ -15,7 +32,112 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jgdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtkfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6vnf")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
 }]
 
-[node name="pigeon" type="AnimatedSprite2D"]
+[sub_resource type="Animation" id="Animation_hrgg7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+
+[sub_resource type="Animation" id="Animation_jvlk2"]
+resource_name = "fly"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(500, -1000)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ShowWinMenu"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mix3h"]
+_data = {
+"RESET": SubResource("Animation_hrgg7"),
+"fly": SubResource("Animation_jvlk2")
+}
+
+[node name="pigeon_parent" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("2_lhytm")
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="pigeon" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1dtlo")
+animation = &"fly"
+autoplay = "default"
+frame_progress = 0.262321
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../pigeon")
+libraries = {
+"": SubResource("AnimationLibrary_mix3h")
+}
