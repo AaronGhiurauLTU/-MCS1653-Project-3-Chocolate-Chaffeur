@@ -143,8 +143,6 @@ public partial class Player : CharacterBody2D
 			if (movingObject is Chocolate chocolate && GameManager.GetTileName(movingObject.GridPosition, tileMap) == "pigeon")
 			{
 				chocolate.ConnectToPigeon(pigeon, winMenu);
-				// Engine.TimeScale = 0;
-				// winMenu.Visible = true;
 				return;
 			}
 		}
@@ -223,7 +221,8 @@ public partial class Player : CharacterBody2D
 
 
 			if ((tileName != null && tileName == "wall") || (currentObject != null && currentObject is MoveableObject 
-				&& ((nextTileName != null && nextTileName == "wall") || (nextObject != null && nextObject is MoveableObject))))
+				&& ((nextTileName != null && nextTileName == "wall") || (nextObject != null && nextObject is MoveableObject) 
+				|| (currentObject is Melon && nextTileName == "pigeon"))))
 			{
 				return;
 			}

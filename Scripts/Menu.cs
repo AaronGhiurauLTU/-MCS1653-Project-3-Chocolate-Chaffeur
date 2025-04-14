@@ -3,7 +3,7 @@ using System;
 
 public partial class Menu : Control
 {
-	[Export] private VBoxContainer instructionsContainer, mainMenuContainer;
+	[Export] private VBoxContainer instructionsContainer, mainMenuContainer, creditsContainer;
 
 	private void OnContinuePressed()
 	{
@@ -34,6 +34,18 @@ public partial class Menu : Control
 	private void OnQuitPressed()
 	{
 		GetTree().Quit();
+	}
+
+	private void OnCreditsPressed()
+	{
+		creditsContainer.Visible = true;
+		mainMenuContainer.Visible = false;
+	}
+
+	private void OnCreditsBackPressed()
+	{
+		creditsContainer.Visible = false;
+		mainMenuContainer.Visible = true;
 	}
 
 	private void OnInstructionsPressed()
