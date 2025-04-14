@@ -46,6 +46,8 @@
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 
+Screen shake tutorial: https://shaggydev.com/2022/02/23/screen-shake-godot/
+Lerp in C# tutorial (used in screen shake): https://forum.godotengine.org/t/how-to-use-lerp-functions-in-c/15038
 
 <br>
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://d3rcuuthsekh4"]
+[gd_scene load_steps=13 format=4 uid="uid://d3rcuuthsekh4"]
 
 [ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_c4je7"]
 [ext_resource type="PackedScene" uid="uid://b1huf68cj2k57" path="res://Scenes/hippo.tscn" id="2_78c4h"]
 [ext_resource type="PackedScene" uid="uid://odoylbec3ug0" path="res://Scenes/melon.tscn" id="2_6062y"]
+[ext_resource type="Script" path="res://Scripts/CameraEffects.cs" id="2_hk6kq"]
 [ext_resource type="PackedScene" uid="uid://ct65u3mb1nns" path="res://Scenes/chocolate.tscn" id="2_isd4w"]
 [ext_resource type="PackedScene" uid="uid://bodvyrp7en4t8" path="res://Scenes/player.tscn" id="2_qwch4"]
 [ext_resource type="PackedScene" uid="uid://ns4fxxiq6pp8" path="res://Scenes/pigeon.tscn" id="4_whmdm"]
@@ -60,6 +61,7 @@ tile_set = SubResource("TileSet_1etkq")
 
 [node name="Camera2D" type="Camera2D" parent="Static"]
 position = Vector2(1120, 800)
+script = ExtResource("2_hk6kq")
 
 [node name="Player" parent="." node_paths=PackedStringArray("tileMap", "pauseMenu", "winMenu") instance=ExtResource("2_qwch4")]
 unique_name_in_owner = true

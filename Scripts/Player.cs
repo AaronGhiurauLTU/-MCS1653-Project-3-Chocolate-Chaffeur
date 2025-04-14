@@ -59,6 +59,14 @@ public partial class Player : CharacterBody2D
 		GameManager.ReloadLevel();
 	}
 	
+	public void ScreenShake(float strength)
+	{
+		Camera2D camera = GetViewport().GetCamera2D();
+
+		if (camera is CameraEffects cameraEffects)
+			cameraEffects.apply_shake(strength);
+	}
+
 	public bool TiledObjectCollidedWithPlayer(TiledObject obj)
 	{
 		if (obj is Hippo hippo && !hippo.Closed)

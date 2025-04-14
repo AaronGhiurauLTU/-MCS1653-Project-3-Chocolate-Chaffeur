@@ -6,6 +6,7 @@ public partial class MoveableObject : TiledObject
 	[Signal] public delegate void PushedEventHandler(MoveableObject obj);
 	[Signal] public delegate void HitObstacleEventHandler(MoveableObject obj, Node2D body);
 	[Export] private AnimationPlayer animationPlayer;
+	
 	public bool isMoving = false;
 	protected void OnBodyEntered(Node2D body)
 	{
@@ -18,6 +19,14 @@ public partial class MoveableObject : TiledObject
 			GD.Print(body.Name);
 			EmitSignal(SignalName.HitObstacle, this, body);
 		}
+	}
+
+	public void ScreenShake(float strength)
+	{
+		Camera2D camera = GetViewport().GetCamera2D();
+
+		if (camera is CameraEffects cameraEffects)
+			cameraEffects.apply_shake(strength);
 	}
 
 	public override void Destroy(bool queueFree = true)

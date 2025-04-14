@@ -42,9 +42,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.966667, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [5.0],
+"method": &"ScreenShake"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
