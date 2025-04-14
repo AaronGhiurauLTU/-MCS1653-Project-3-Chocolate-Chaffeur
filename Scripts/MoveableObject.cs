@@ -33,7 +33,15 @@ public partial class MoveableObject : TiledObject
 	{
 		base.Destroy(false);
 		
-		animationPlayer.Play("destroy");
+		if (queueFree)
+		{
+			animationPlayer.Play("destroy");
+		}
+		else
+		{
+			animationPlayer.Play("melt");
+		}
+
 	}
 
 	// Called when the node enters the scene tree for the first time.

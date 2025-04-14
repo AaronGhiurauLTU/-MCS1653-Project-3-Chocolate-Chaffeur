@@ -134,7 +134,7 @@ animationPlayer = NodePath("AnimationPlayer")
 sprite_frames = SubResource("SpriteFrames_1dtlo")
 animation = &"fly"
 autoplay = "default"
-frame_progress = 0.262321
+frame_progress = 0.103962
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../pigeon")

@@ -36,8 +36,6 @@ public partial class Chocolate : MoveableObject
 		this.Position = Vector2.Zero;
 		animationPlayer.Play("shrink");
 		pigeon.Fly(winMenu);
-
-		GD.Print(GetParent().Name);
 	}
 
 	public override void _Process(double delta)
@@ -59,7 +57,7 @@ public partial class Chocolate : MoveableObject
 
 			if (color <= 0)
 			{
-				Destroy();
+				Destroy(false);
 			}
 		}
 	}
