@@ -6,13 +6,15 @@ public partial class Player : CharacterBody2D
 	[Export] private int tileSize = 160;
 	[Export] private float Speed = 300.0f;
 	[Export] private AnimatedSprite2D animatedSprite;
+	[Export] private AnimationPlayer animationPlayer;
 	[Export] private Timer moveCooldown;
 	[Export] private TileMapLayer tileMap;
 	[Export] private Control pauseMenu, winMenu;
 
 	private bool isMoving = false,
 		pushingObject = false,
-		canMove = true;
+		canMove = true,
+		gettingEaten = false;
 	private MoveableObject movingObject;
 	private Vector2 originalPosition, targetPosition, previousRawDirection, previousDirection;
 	public override void _Ready()
@@ -52,7 +54,7 @@ public partial class Player : CharacterBody2D
 		StopMoving();
 	}
 
-	private void ReloadLevel()
+	public void ReloadLevel()
 	{
 		GameManager.ReloadLevel();
 	}
@@ -61,8 +63,9 @@ public partial class Player : CharacterBody2D
 	{
 		if (obj is Hippo hippo && !hippo.Closed)
 		{
-			CallDeferred("ReloadLevel");
-			Engine.TimeScale = 0;
+			gettingEaten = true;
+			hippo.Close();
+			animationPlayer.Play("destroy");
 			return true;
 		}
 
@@ -73,7 +76,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (obj is Hippo hippo && !hippo.Closed)
 		{
-			if (body is Melon melon)
+			if (body is Melon melon || body is Chocolate chocolate)
 			{
 				hippo.Close();
 			}
@@ -139,7 +142,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (winMenu.Visible)
+		if (winMenu.Visible || gettingEaten)
 			return;
 
 		if (Engine.TimeScale == 0)

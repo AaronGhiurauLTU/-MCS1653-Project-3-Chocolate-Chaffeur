@@ -16,9 +16,15 @@ public partial class Chocolate : MoveableObject
 	{
 		GameManager.ReloadLevel();
 	}
+
+	public override void Destroy(bool queueFree = true)
+	{
+		base.Destroy(queueFree);
+	}
+
+
 	public void DestroyChocolate()
 	{
-		base.Destroy();
 		CallDeferred("ReloadLevel");
 		Engine.TimeScale = 0;
 	}
