@@ -78,6 +78,7 @@ position = Vector2(400, 560)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("localPlayer")]
 script = ExtResource("5_inww3")
+level = 2
 localPlayer = NodePath("../Player")
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_7ejvx")]

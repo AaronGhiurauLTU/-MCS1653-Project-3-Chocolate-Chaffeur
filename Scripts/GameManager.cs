@@ -48,9 +48,12 @@ public partial class GameManager : Node
 		switch (level)
 		{
 			case 1:
-				instance.GetTree().ChangeSceneToFile("res://Scenes/level2.tscn");
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level1.tscn");
 				break;
 			case 2:
+				instance.GetTree().ChangeSceneToFile("res://Scenes/level2.tscn");
+				break;
+			case 3:
 				instance.GetTree().ChangeSceneToFile("res://Scenes/level3.tscn");
 				break;
 		}

@@ -93,12 +93,15 @@ public partial class Player : CharacterBody2D
 	{
 		if (obj is Hippo hippo && !hippo.Closed)
 		{
-			if (body is Melon melon || body is Chocolate chocolate)
+			if (body is MoveableObject moveableObject)
 			{
+				moveableObject.isMoving = true;
+
 				hippo.Close();
 			}
 
 			body.Destroy();
+			
 
 			return true;
 		}
