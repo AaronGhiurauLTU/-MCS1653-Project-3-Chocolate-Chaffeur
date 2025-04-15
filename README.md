@@ -29,6 +29,9 @@
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
 
+Bite sound:
+	
+	Biting Corn Chip 01 by HECKFRICKER -- https://freesound.org/s/753307/ -- License: Creative Commons 0
 
 <br>
 

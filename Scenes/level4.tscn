@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c1nk5ocqr5718"]
+[gd_scene load_steps=15 format=4 uid="uid://c1nk5ocqr5718"]
 
 [ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_0mrac"]
 [ext_resource type="Script" path="res://Scripts/CameraEffects.cs" id="2_do74s"]
@@ -47,6 +47,11 @@ physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "Name"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_fojpo")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wq035"]
+font_size = 46
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Node2D"]
 
@@ -104,6 +109,14 @@ position = Vector2(1360, 1040)
 script = ExtResource("8_n0bg3")
 level = 4
 localPlayer = NodePath("../Player")
+
+[node name="Label" type="Label" parent="GameManager"]
+offset_left = 164.0
+offset_top = 253.0
+offset_right = 318.0
+offset_bottom = 317.0
+text = "Level 5"
+label_settings = SubResource("LabelSettings_wq035")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_kdf63")]
 visible = false

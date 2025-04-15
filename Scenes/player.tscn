@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bodvyrp7en4t8"]
+[gd_scene load_steps=10 format=3 uid="uid://bodvyrp7en4t8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
 [ext_resource type="Texture2D" uid="uid://oa14fdg3sn5r" path="res://Sprites/dog_and_pigeon.png" id="2_druxm"]
+[ext_resource type="AudioStream" uid="uid://c8qe20vish0oa" path="res://Sounds/SFX/753307__heckfricker__biting-corn-chip-01.wav" id="3_br8qv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c56w"]
 atlas = ExtResource("2_druxm")
@@ -92,6 +93,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0, 6.28319]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eaten:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2lvo"]
 _data = {
@@ -124,5 +137,9 @@ libraries = {
 "": SubResource("AnimationLibrary_m2lvo")
 }
 speed_scale = 1.5
+
+[node name="Eaten" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_br8qv")
+bus = &"SFX"
 
 [connection signal="timeout" from="MoveCooldown" to="." method="OnMoveCooldownTimeout"]

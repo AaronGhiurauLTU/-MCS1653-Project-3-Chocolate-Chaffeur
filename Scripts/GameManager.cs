@@ -79,6 +79,9 @@ public partial class GameManager : Node
 		currentLevel = level;
 		instance = this;
 		player = localPlayer;
+
+		Label levelLabel = GetNode<Label>("Label");
+		levelLabel.Text = "Level " + currentLevel;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
