@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://odoylbec3ug0"]
+[gd_scene load_steps=11 format=3 uid="uid://odoylbec3ug0"]
 
 [ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_svrm4"]
 [ext_resource type="Script" path="res://Scripts/Melon.cs" id="2_4jk56"]
 [ext_resource type="AudioStream" uid="uid://c8qe20vish0oa" path="res://Sounds/SFX/753307__heckfricker__biting-corn-chip-01.wav" id="3_trvwh"]
+[ext_resource type="AudioStream" uid="uid://ceuy7xwqgg8oy" path="res://Sounds/SFX/35137__roubignolle__hippo-ronflement.wav" id="4_f1mm3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07obf"]
 atlas = ExtResource("1_svrm4")
@@ -119,6 +120,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hippo:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qm6tv"]
 _data = {
@@ -145,6 +158,11 @@ speed_scale = 1.5
 
 [node name="Eaten" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_trvwh")
+bus = &"SFX"
+
+[node name="Hippo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f1mm3")
+volume_db = 4.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

@@ -33,6 +33,18 @@ Bite sound:
 	
 	Biting Corn Chip 01 by HECKFRICKER -- https://freesound.org/s/753307/ -- License: Creative Commons 0
 
+Pigeon Flying sound:
+
+	Pigeons flying by mcmikai -- https://freesound.org/s/532180/ -- License: Creative Commons 0
+
+Hippo sound:
+
+	Hippo-Ronflement.aif by roubignolle -- https://freesound.org/s/35137/ -- License: Attribution 4.0
+
+Melt sound:
+
+	Sludge Footstep 2.wav by morganpurkis -- https://freesound.org/s/384657/ -- License: Attribution 4.0
+	
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)

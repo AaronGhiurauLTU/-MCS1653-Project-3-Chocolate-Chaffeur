@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct65u3mb1nns"]
+[gd_scene load_steps=14 format=3 uid="uid://ct65u3mb1nns"]
 
 [ext_resource type="Texture2D" uid="uid://cfvgeaw4vctav" path="res://Sprites/CC-TileMap.png" id="1_3n6pc"]
 [ext_resource type="Script" path="res://Scripts/Chocolate.cs" id="2_f8ivg"]
 [ext_resource type="AudioStream" uid="uid://c8qe20vish0oa" path="res://Sounds/SFX/753307__heckfricker__biting-corn-chip-01.wav" id="3_dtwbm"]
+[ext_resource type="AudioStream" uid="uid://ceuy7xwqgg8oy" path="res://Sounds/SFX/35137__roubignolle__hippo-ronflement.wav" id="4_tnquy"]
+[ext_resource type="AudioStream" uid="uid://2kkcu62hs1bo" path="res://Sounds/SFX/384657__morganpurkis__sludge-footstep-2.wav" id="5_s1kd5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1g1yr"]
 atlas = ExtResource("1_3n6pc")
@@ -143,6 +145,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hippo:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fitgp"]
 resource_name = "melt"
@@ -225,6 +239,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 2),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.356863)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Melt:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ihtm8"]
@@ -312,5 +338,13 @@ speed_scale = 1.5
 [node name="Eaten" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dtwbm")
 bus = &"SFX"
+
+[node name="Hippo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tnquy")
+volume_db = 4.0
+
+[node name="Melt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s1kd5")
+volume_db = -6.0
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
