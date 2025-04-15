@@ -337,14 +337,17 @@ speed_scale = 1.5
 
 [node name="Eaten" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dtwbm")
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="Hippo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tnquy")
-volume_db = 4.0
+volume_db = 10.0
+bus = &"SFX"
 
 [node name="Melt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_s1kd5")
-volume_db = -10.0
+volume_db = -7.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

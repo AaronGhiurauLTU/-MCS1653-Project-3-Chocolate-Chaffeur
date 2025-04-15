@@ -18,6 +18,7 @@ public partial class Player : CharacterBody2D
 		gettingEaten = false;
 	private MoveableObject movingObject;
 	private Vector2 originalPosition, targetPosition, previousRawDirection, previousDirection;
+	[Export] private AudioStreamPlayer slideSound;
 	public override void _Ready()
 	{
 		pauseMenu.Visible = false;
@@ -45,6 +46,7 @@ public partial class Player : CharacterBody2D
 		pushingObject = true;
 		movingObject = moveableObject;
 		moveableObject.isMoving = true;
+		slideSound.Play();
 	}
 
 	public void MoveableObjectHitObstacle(MoveableObject obj, Node2D body)

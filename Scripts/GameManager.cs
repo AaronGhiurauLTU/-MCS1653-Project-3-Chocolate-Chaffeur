@@ -85,10 +85,12 @@ public partial class GameManager : Node
 
 		if (currentLevel < 5)
 		{
+			MusicManager.SetBusVolume("Music", 0);
 			MusicManager.PlaySong(MusicManager.Song.Background1);
 		}
 		else
 		{
+			MusicManager.SetBusVolume("Music", 3);
 			MusicManager.PlaySong(MusicManager.Song.Background2);
 		}
 	}

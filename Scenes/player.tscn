@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bodvyrp7en4t8"]
+[gd_scene load_steps=12 format=3 uid="uid://bodvyrp7en4t8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
 [ext_resource type="Texture2D" uid="uid://oa14fdg3sn5r" path="res://Sprites/dog_and_pigeon.png" id="2_druxm"]
 [ext_resource type="AudioStream" uid="uid://c8qe20vish0oa" path="res://Sounds/SFX/753307__heckfricker__biting-corn-chip-01.wav" id="3_br8qv"]
 [ext_resource type="AudioStream" uid="uid://ceuy7xwqgg8oy" path="res://Sounds/SFX/35137__roubignolle__hippo-ronflement.wav" id="4_0o0wr"]
+[ext_resource type="AudioStream" uid="uid://cfccodsmst38c" path="res://Sounds/SFX/stone-slide-sound-effects-322794-trimmed.wav" id="5_al7bo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c56w"]
 atlas = ExtResource("2_druxm")
@@ -125,15 +126,16 @@ _data = {
 "destroy": SubResource("Animation_kvn20")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "animationPlayer", "moveCooldown")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite", "animationPlayer", "moveCooldown", "slideSound")]
 z_index = 2
 collision_layer = 3
 collision_mask = 7
 script = ExtResource("1_7vq0b")
-Speed = 900.0
+Speed = 800.0
 animatedSprite = NodePath("AnimatedSprite2D")
 animationPlayer = NodePath("AnimationPlayer")
 moveCooldown = NodePath("MoveCooldown")
+slideSound = NodePath("Slide")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sy382")
@@ -153,11 +155,16 @@ speed_scale = 1.5
 
 [node name="Eaten" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_br8qv")
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="Hippo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0o0wr")
-volume_db = 4.0
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="Slide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_al7bo")
 bus = &"SFX"
 
 [connection signal="timeout" from="MoveCooldown" to="." method="OnMoveCooldownTimeout"]
