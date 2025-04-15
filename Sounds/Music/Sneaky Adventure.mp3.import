@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds7rijrwu434l"
+path="res://.godot/imported/Sneaky Adventure.mp3-d84ef68a1e4b097a62436ad91a4b82c4.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Sneaky Adventure.mp3"
+dest_files=["res://.godot/imported/Sneaky Adventure.mp3-d84ef68a1e4b097a62436ad91a4b82c4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

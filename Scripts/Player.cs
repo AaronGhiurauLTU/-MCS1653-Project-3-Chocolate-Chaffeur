@@ -171,6 +171,10 @@ public partial class Player : CharacterBody2D
 				pauseMenu.Visible = false;
 				Engine.TimeScale = 1;
 			}
+			else if (Input.IsActionPressed("control") && Input.IsActionPressed("right"))
+			{
+				GameManager.LoadLevel(++GameManager.currentLevel);
+			}
 			return;
 		}
 

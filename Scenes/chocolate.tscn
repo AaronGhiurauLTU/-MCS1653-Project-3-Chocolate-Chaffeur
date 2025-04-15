@@ -345,6 +345,6 @@ volume_db = 4.0
 
 [node name="Melt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_s1kd5")
-volume_db = -6.0
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]

@@ -29,6 +29,18 @@
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
 
+BG Music 1:
+
+	Sneaky Adventure Kevin MacLeod (incompetech.com)
+	Licensed under Creative Commons: By Attribution 3.0 License
+	http://creativecommons.org/licenses/by/3.0/
+
+BG Music 2:
+
+	Magic Escape Room Kevin MacLeod (incompetech.com)
+	Licensed under Creative Commons: By Attribution 3.0 License
+	http://creativecommons.org/licenses/by/3.0/
+
 Bite sound:
 	
 	Biting Corn Chip 01 by HECKFRICKER -- https://freesound.org/s/753307/ -- License: Creative Commons 0
@@ -44,7 +56,7 @@ Hippo sound:
 Melt sound:
 
 	Sludge Footstep 2.wav by morganpurkis -- https://freesound.org/s/384657/ -- License: Attribution 4.0
-	
+
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)

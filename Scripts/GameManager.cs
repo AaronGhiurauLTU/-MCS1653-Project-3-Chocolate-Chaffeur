@@ -82,10 +82,14 @@ public partial class GameManager : Node
 
 		Label levelLabel = GetNode<Label>("Label");
 		levelLabel.Text = "Level " + currentLevel;
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		if (currentLevel < 5)
+		{
+			MusicManager.PlaySong(MusicManager.Song.Background1);
+		}
+		else
+		{
+			MusicManager.PlaySong(MusicManager.Song.Background2);
+		}
 	}
 }
