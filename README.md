@@ -35,16 +35,16 @@ BG Music 1:
 	Licensed under Creative Commons: By Attribution 3.0 License
 	http://creativecommons.org/licenses/by/3.0/
 
-Sliding Sound:
-
-	https://pixabay.com/sound-effects/stone-slide-sound-effects-322794/
-
 BG Music 2:
 
 	Magic Escape Room Kevin MacLeod (incompetech.com)
 	Licensed under Creative Commons: By Attribution 3.0 License
 	http://creativecommons.org/licenses/by/3.0/
 
+Sliding Sound:
+
+	https://pixabay.com/sound-effects/stone-slide-sound-effects-322794/
+	
 Bite sound:
 	
 	Biting Corn Chip 01 by HECKFRICKER -- https://freesound.org/s/753307/ -- License: Creative Commons 0

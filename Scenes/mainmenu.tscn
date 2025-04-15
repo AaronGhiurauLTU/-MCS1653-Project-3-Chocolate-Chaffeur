@@ -126,11 +126,14 @@ text = "Credits:"
 label_settings = SubResource("LabelSettings_sclcr")
 horizontal_alignment = 1
 
-[node name="InstructionsText" type="Label" parent="CreditsContainer"]
+[node name="CreditsText" type="Label" parent="CreditsContainer"]
 layout_mode = 2
 text = "Art: Aaron Ghiurau
 Level Design: Aaron Ghiurau
-Programming: Aaron Ghiurau"
+Programming: Aaron Ghiurau
+Music: Kevin Macleod
+SFX: u_i15wxund59, HECKFRICKER, mcmikai,
+roubignolle, morganpurkis"
 label_settings = SubResource("LabelSettings_s3jla")
 horizontal_alignment = 1
 
@@ -141,6 +144,12 @@ text = "Back"
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("2_6ue40")
+
+[node name="Label" type="Label" parent="GameManager"]
+offset_left = -400.0
+offset_top = 160.0
+offset_right = -360.0
+offset_bottom = 183.0
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="VBoxContainer/Instructions" to="." method="OnInstructionsPressed"]

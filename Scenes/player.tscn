@@ -1,12 +1,32 @@
-[gd_scene load_steps=12 format=3 uid="uid://bodvyrp7en4t8"]
+[gd_scene load_steps=17 format=3 uid="uid://bodvyrp7en4t8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7vq0b"]
-[ext_resource type="Texture2D" uid="uid://oa14fdg3sn5r" path="res://Sprites/dog_and_pigeon.png" id="2_druxm"]
+[ext_resource type="Texture2D" uid="uid://mce1itp71xrq" path="res://Sprites/dog_and_pigeon.png" id="2_druxm"]
 [ext_resource type="AudioStream" uid="uid://c8qe20vish0oa" path="res://Sounds/SFX/753307__heckfricker__biting-corn-chip-01.wav" id="3_br8qv"]
 [ext_resource type="AudioStream" uid="uid://ceuy7xwqgg8oy" path="res://Sounds/SFX/35137__roubignolle__hippo-ronflement.wav" id="4_0o0wr"]
 [ext_resource type="AudioStream" uid="uid://cfccodsmst38c" path="res://Sounds/SFX/stone-slide-sound-effects-322794-trimmed.wav" id="5_al7bo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4c56w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx2rm"]
+atlas = ExtResource("2_druxm")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbd0c"]
+atlas = ExtResource("2_druxm")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhp2"]
+atlas = ExtResource("2_druxm")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ni2"]
+atlas = ExtResource("2_druxm")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bvlu"]
+atlas = ExtResource("2_druxm")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqmfn"]
 atlas = ExtResource("2_druxm")
 region = Rect2(0, 0, 160, 160)
 
@@ -14,7 +34,22 @@ region = Rect2(0, 0, 160, 160)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4c56w")
+"texture": SubResource("AtlasTexture_yx2rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbd0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krhp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ni2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bvlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqmfn")
 }],
 "loop": true,
 "name": &"default",
@@ -139,6 +174,8 @@ slideSound = NodePath("Slide")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sy382")
+autoplay = "default"
+frame_progress = 0.656437
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

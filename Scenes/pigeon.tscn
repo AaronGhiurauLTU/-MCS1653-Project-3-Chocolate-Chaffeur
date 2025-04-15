@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ns4fxxiq6pp8"]
 
-[ext_resource type="Texture2D" uid="uid://oa14fdg3sn5r" path="res://Sprites/dog_and_pigeon.png" id="1_rpsag"]
+[ext_resource type="Texture2D" uid="uid://mce1itp71xrq" path="res://Sprites/dog_and_pigeon.png" id="1_rpsag"]
 [ext_resource type="Script" path="res://Scripts/Pigeon.cs" id="2_lhytm"]
 [ext_resource type="AudioStream" uid="uid://jrebw5lvudp7" path="res://Sounds/SFX/532180__mcmikai__pigeons-flying-trimmed.wav" id="3_7r3mn"]
 
