@@ -175,7 +175,7 @@ slideSound = NodePath("Slide")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sy382")
 autoplay = "default"
-frame_progress = 0.656437
+frame_progress = 0.0263578
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

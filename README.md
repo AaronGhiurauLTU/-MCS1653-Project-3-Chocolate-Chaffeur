@@ -12,18 +12,25 @@
 # Required ReadMe Info for ALL MCS1653 Projects
 * **Project**   - Project 3 Puzzle Game: Chocolate Chaffeur
 * **Your Name** - Aaron Ghiurau
-* **Date**      -
+* **Date**      - 04/16/2025
 
 <br>
 
 1. **What are the controls to your game? How do we play?**
 
+WASD or arrow keys to move.
 
+R to reset level.
+
+Escape to pause.
+
+The goal is to push the chocolate to the pigeon.
 
 <br>
 
 2. **What creative additions did you make? How can we find them?**
 
+All art was done by me. The interactions between melons and hippoes create a unique interaction since the hippoes eat the melons and become passive. Levels start easier and introduce one mechanic at a time. The early levels also allow some error, specifically level 3 where it is possible to create extra room for the row of heater tiles.
 
 <br>
 
@@ -44,7 +51,7 @@ BG Music 2:
 Sliding Sound:
 
 	https://pixabay.com/sound-effects/stone-slide-sound-effects-322794/
-	
+
 Bite sound:
 	
 	Biting Corn Chip 01 by HECKFRICKER -- https://freesound.org/s/753307/ -- License: Creative Commons 0
@@ -65,13 +72,13 @@ Melt sound:
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
 
-
+No.
 
 <br>
 
 5. **Did you get help from any AI Code Assistants?** <br> (Tell us which .cs file to look in for the citation and describe what you learned)
 
-
+No.
 
 <br>
 
@@ -84,12 +91,14 @@ Lerp in C# tutorial (used in screen shake): https://forum.godotengine.org/t/how-
 
 7. **What trouble did you have with this project?**
 
+The main trouble was setting up the tiling system. It took a bit of time to get the 4 directional, tile based movement feeling good with proper input buffering.
+It was also difficult to get pushing objects working well with proper collision detection.
 
 <br>
 
 8. **Is there anything else we should know?**
 
-
+There definitely isn't a shortcut to skip levels by pressing ctrl+right arrow on the pause menu.
 
 <br><br><br><br><br>
 

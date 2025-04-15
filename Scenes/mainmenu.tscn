@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://q68kr2pecq1a"]
+[gd_scene load_steps=21 format=3 uid="uid://q68kr2pecq1a"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_jl7um"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_6ue40"]
+[ext_resource type="Texture2D" uid="uid://dm1wd3boce8l4" path="res://Sprites/CC-Main-Menu.png" id="3_q1wrn"]
+[ext_resource type="Texture2D" uid="uid://mce1itp71xrq" path="res://Sprites/dog_and_pigeon.png" id="4_jfifm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m71s2"]
 font_size = 64
@@ -17,6 +19,104 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 28
 outline_size = 22
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlrk5"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(0, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7lu"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jgdt"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(480, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtkfo"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(320, 320, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6vnf"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(160, 320, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dtlo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlrk5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jgdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtkfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6vnf")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx2rm"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbd0c"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhp2"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ni2"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bvlu"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqmfn"]
+atlas = ExtResource("4_jfifm")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy382"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx2rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbd0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krhp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ni2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bvlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqmfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("instructionsContainer", "mainMenuContainer", "creditsContainer")]
 layout_mode = 3
@@ -150,6 +250,33 @@ offset_left = -400.0
 offset_top = 160.0
 offset_right = -360.0
 offset_bottom = 183.0
+
+[node name="Cc-main-menu" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("3_q1wrn")
+
+[node name="pigeon_parent" type="Node2D" parent="."]
+position = Vector2(1444, 233)
+rotation = -0.305433
+scale = Vector2(1.5, 1.5)
+
+[node name="pigeon" type="AnimatedSprite2D" parent="pigeon_parent"]
+position = Vector2(171.333, 54)
+sprite_frames = SubResource("SpriteFrames_1dtlo")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.318159
+flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(345, 698)
+rotation = 0.191986
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sy382")
+autoplay = "default"
+frame_progress = 0.0726163
+flip_h = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="VBoxContainer/Instructions" to="." method="OnInstructionsPressed"]

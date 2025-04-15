@@ -49,7 +49,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_hrgg7"]
