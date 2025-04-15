@@ -30,7 +30,7 @@ The goal is to push the chocolate to the pigeon.
 
 2. **What creative additions did you make? How can we find them?**
 
-All art was done by me. The interactions between melons and hippoes create a unique interaction since the hippoes eat the melons and become passive. Levels start easier and introduce one mechanic at a time. The early levels also allow some error, specifically level 3 where it is possible to create extra room for the row of heater tiles.
+All art was done by me. The interactions between melons and hippos create a unique interaction since the hippos eat the melons and become passive. Levels start easier and introduce one mechanic at a time. The early levels also allow some error, specifically level 3 where it is possible to create extra room for the row of heater tiles.
 
 <br>
 
