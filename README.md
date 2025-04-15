@@ -85,6 +85,7 @@ No.
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 
 Screen shake tutorial: https://shaggydev.com/2022/02/23/screen-shake-godot/
+
 Lerp in C# tutorial (used in screen shake): https://forum.godotengine.org/t/how-to-use-lerp-functions-in-c/15038
 
 <br>
@@ -98,7 +99,11 @@ It was also difficult to get pushing objects working well with proper collision 
 
 8. **Is there anything else we should know?**
 
+There are 6 levels.
+
 There definitely isn't a shortcut to skip levels by pressing ctrl+right arrow on the pause menu.
+
+Made in Godot 4.3
 
 <br><br><br><br><br>
 

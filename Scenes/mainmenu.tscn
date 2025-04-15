@@ -40,7 +40,7 @@ region = Rect2(320, 320, 160, 160)
 atlas = ExtResource("4_jfifm")
 region = Rect2(160, 320, 160, 160)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1dtlo"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ux3b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -65,7 +65,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yx2rm"]
@@ -263,19 +263,20 @@ scale = Vector2(1.5, 1.5)
 
 [node name="pigeon" type="AnimatedSprite2D" parent="pigeon_parent"]
 position = Vector2(171.333, 54)
-sprite_frames = SubResource("SpriteFrames_1dtlo")
+sprite_frames = SubResource("SpriteFrames_1ux3b")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.318159
+frame = 1
+frame_progress = 0.32925
 flip_h = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="dog" type="AnimatedSprite2D" parent="."]
 position = Vector2(345, 698)
 rotation = 0.191986
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sy382")
 autoplay = "default"
-frame_progress = 0.0726163
+frame_progress = 0.266514
 flip_h = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="OnPlayPressed"]

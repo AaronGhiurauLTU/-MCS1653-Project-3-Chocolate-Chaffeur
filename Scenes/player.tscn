@@ -30,7 +30,7 @@ region = Rect2(320, 0, 160, 160)
 atlas = ExtResource("2_druxm")
 region = Rect2(0, 0, 160, 160)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sy382"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pv4m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -173,9 +173,9 @@ moveCooldown = NodePath("MoveCooldown")
 slideSound = NodePath("Slide")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_sy382")
+sprite_frames = SubResource("SpriteFrames_4pv4m")
 autoplay = "default"
-frame_progress = 0.0263578
+frame_progress = 0.743835
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -192,7 +192,7 @@ speed_scale = 1.5
 
 [node name="Eaten" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_br8qv")
-volume_db = 4.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="Hippo" type="AudioStreamPlayer" parent="."]
