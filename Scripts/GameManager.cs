@@ -79,7 +79,7 @@ public partial class GameManager : Node
 		currentLevel = level;
 		instance = this;
 		player = localPlayer;
-		
+
 		Label levelLabel = GetNode<Label>("Label");
 		levelLabel.Text = "Level " + currentLevel;
 
@@ -90,7 +90,7 @@ public partial class GameManager : Node
 		}
 		else
 		{
-			MusicManager.SetBusVolume("Music", 3);
+			MusicManager.SetBusVolume("Music", 0);
 			MusicManager.PlaySong(MusicManager.Song.Background2);
 		}
 	}
